@@ -1,0 +1,904 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TokoDita - Tas Wanita & Aksesoris</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #fff8fc;
+            color: #593448;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        /* HEADER */
+        .header {
+            background: linear-gradient(120deg, #f7a9d0, #fbd1e6);
+            padding: 17px 7%;
+            box-shadow: 0 4px 15px rgba(190, 75, 135, 0.12);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header .container {
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            color: #8d245c;
+            white-space: nowrap;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 23px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: #713b59;
+            font-size: 13px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: #80516d;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 10px 17px;
+            border-radius: 25px;
+            transition: 0.3s;
+        }
+
+        nav a:hover,
+        nav a.active {
+            background: #ffe0ef;
+            color: #c52b82;
+        }
+
+        nav i {
+            margin-right: 4px;
+        }
+
+        /* HERO */
+        .hero {
+            padding: 75px 7%;
+            background:
+                radial-gradient(circle at 5% 15%, #ffe0ef 0, transparent 25%),
+                radial-gradient(circle at 95% 85%, #fbd5e8 0, transparent 25%),
+                #fff8fc;
+            overflow: hidden;
+        }
+
+        .hero .container {
+            max-width: 1200px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 1fr 1.1fr;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .label {
+            display: inline-block;
+            background: #ffe1ef;
+            color: #bd4383;
+            padding: 9px 18px;
+            border-radius: 30px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 22px;
+        }
+
+        .hero-text h2 {
+            font-size: clamp(32px, 4vw, 50px);
+            color: #8e285f;
+            line-height: 1.3;
+            margin-bottom: 18px;
+        }
+
+        .hero-text h2 span {
+            color: #dc70a8;
+        }
+
+        .hero-text p {
+            color: #8a6679;
+            font-size: 14px;
+            line-height: 1.9;
+            margin-bottom: 28px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #e96bab, #d94694);
+            color: white;
+            padding: 14px 28px;
+            border-radius: 35px;
+            font-size: 13px;
+            font-weight: 700;
+            box-shadow: 0 7px 18px rgba(217, 70, 148, 0.25);
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 25px rgba(217, 70, 148, 0.35);
+        }
+
+        .btn-outline {
+            display: inline-block;
+            border: 2px solid #e96bab;
+            color: #c33c87;
+            padding: 12px 25px;
+            border-radius: 35px;
+            font-size: 13px;
+            font-weight: 700;
+            transition: 0.3s;
+        }
+
+        .btn-outline:hover {
+            background: #ffe1ef;
+        }
+
+        .hero-note {
+            margin-top: 28px;
+            color: #a77d94;
+            font-size: 12px;
+        }
+
+        /* HERO IMAGE */
+        .hero-image {
+            position: relative;
+        }
+
+        .banner {
+            background: white;
+            padding: 12px;
+            border-radius: 28px;
+            box-shadow: 0 15px 40px rgba(169, 75, 125, 0.18);
+            transform: rotate(1deg);
+            transition: 0.4s;
+        }
+
+        .banner:hover {
+            transform: rotate(0deg) scale(1.02);
+        }
+
+        .banner img {
+            width: 100%;
+            height: 370px;
+            display: block;
+            border-radius: 20px;
+            object-fit: cover;
+        }
+
+        /* KEUNGGULAN */
+        .keunggulan {
+            padding: 65px 7%;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .section-title span {
+            color: #d94694;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .section-title h2 {
+            color: #8e285f;
+            font-size: 28px;
+            margin: 8px 0;
+        }
+
+        .section-title p {
+            color: #98758a;
+            font-size: 13px;
+        }
+
+        .fitur-container {
+            max-width: 1150px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .fitur {
+            text-align: center;
+            background: #fff5fa;
+            padding: 30px 22px;
+            border-radius: 22px;
+            transition: 0.3s;
+            border: 1px solid #fce0ed;
+        }
+
+        .fitur:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 10px 25px rgba(190, 75, 135, 0.12);
+        }
+
+        .fitur .ikon {
+            width: 65px;
+            height: 65px;
+            margin: 0 auto 15px;
+            background: #ffe1ef;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 29px;
+        }
+
+        .fitur h3 {
+            color: #bd4383;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .fitur p {
+            color: #8a6679;
+            font-size: 12px;
+            line-height: 1.8;
+        }
+
+        /* KATEGORI */
+        .kategori {
+            padding: 65px 7%;
+            background: #fff8fc;
+        }
+
+        .kategori-container {
+            max-width: 800px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .kategori-card {
+            background: white;
+            border-radius: 22px;
+            padding: 30px 20px;
+            text-align: center;
+            border: 1px solid #fce0ed;
+            box-shadow: 0 5px 20px rgba(190, 75, 135, 0.06);
+            transition: 0.3s;
+        }
+
+        .kategori-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 10px 25px rgba(190, 75, 135, 0.12);
+        }
+
+        .kategori-card .ikon {
+            font-size: 42px;
+            margin-bottom: 12px;
+        }
+
+        .kategori-card h3 {
+            color: #bd4383;
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        .kategori-card p {
+            color: #98758a;
+            font-size: 12px;
+            line-height: 1.7;
+        }
+
+        /* PRODUK PILIHAN */
+        .produk-pilihan {
+            padding: 65px 7%;
+            background: white;
+        }
+
+        .produk-container {
+            max-width: 1100px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .produk-card {
+            background: #fff8fc;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid #fce0ed;
+            transition: 0.3s;
+        }
+
+        .produk-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 10px 25px rgba(190, 75, 135, 0.13);
+        }
+
+        .produk-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+            background: #ffeaf4;
+        }
+
+        .produk-info {
+            padding: 20px;
+        }
+
+        .produk-info .tag {
+            display: inline-block;
+            background: #ffe1ef;
+            color: #c33c87;
+            font-size: 10px;
+            font-weight: 700;
+            padding: 5px 12px;
+            border-radius: 20px;
+            margin-bottom: 10px;
+        }
+
+        .produk-info h3 {
+            color: #8e285f;
+            font-size: 15px;
+            margin-bottom: 8px;
+        }
+
+        .produk-info p {
+            color: #d94694;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .produk-link {
+            display: block;
+            text-align: center;
+            margin: 30px auto 0;
+            width: fit-content;
+        }
+
+        /* PROMO */
+        .promo {
+            padding: 55px 7%;
+            background: linear-gradient(120deg, #f8b8d8, #fce2ef);
+        }
+
+        .promo-container {
+            max-width: 1100px;
+            margin: auto;
+            text-align: center;
+            background: rgba(255,255,255,0.45);
+            padding: 40px 20px;
+            border-radius: 25px;
+            border: 1px solid rgba(255,255,255,0.7);
+        }
+
+        .promo h2 {
+            color: #8e285f;
+            font-size: 27px;
+            margin-bottom: 12px;
+        }
+
+        .promo p {
+            color: #80516d;
+            font-size: 13px;
+            margin-bottom: 25px;
+            line-height: 1.8;
+        }
+
+        /* AJAKAN */
+        .ajakan {
+            text-align: center;
+            padding: 65px 20px;
+            background: #fff8fc;
+        }
+
+        .ajakan h2 {
+            color: #8e285f;
+            font-size: 27px;
+            margin-bottom: 12px;
+        }
+
+        .ajakan p {
+            color: #80516d;
+            font-size: 13px;
+            margin-bottom: 25px;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #8e285f;
+            color: white;
+            padding: 40px 7% 20px;
+        }
+
+        .footer-container {
+            max-width: 1100px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr 1fr;
+            gap: 30px;
+            padding-bottom: 25px;
+        }
+
+        footer h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+        }
+
+        footer h4 {
+            font-size: 14px;
+            margin-bottom: 12px;
+            color: #ffd8eb;
+        }
+
+        footer p,
+        footer a {
+            color: #f9d5e7;
+            font-size: 12px;
+            line-height: 2;
+        }
+
+        footer a {
+            display: block;
+            transition: 0.3s;
+        }
+
+        footer a:hover {
+            color: white;
+            padding-left: 4px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.2);
+            text-align: center;
+            padding-top: 18px;
+            font-size: 11px;
+            color: #f9d5e7;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 850px) {
+            .header .container {
+                flex-direction: column;
+            }
+
+            nav {
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .hero .container {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 35px;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-note {
+                margin-top: 20px;
+            }
+
+            .banner img {
+                height: 300px;
+            }
+
+            .floating-card {
+                left: 5px;
+            }
+
+            .fitur-container,
+            .kategori-container,
+            .produk-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 550px) {
+            .header {
+                padding: 17px 5%;
+            }
+
+            .logo {
+                font-size: 25px;
+            }
+
+            nav {
+                gap: 12px;
+            }
+
+            nav a {
+                font-size: 11px;
+            }
+
+            .hero {
+                padding: 45px 6%;
+            }
+
+            .hero-text h2 {
+                font-size: 32px;
+            }
+
+            .hero-text p {
+                font-size: 12px;
+            }
+
+            .banner img {
+                height: 220px;
+            }
+
+            .floating-card {
+                bottom: 12px;
+                padding: 10px 13px;
+                font-size: 10px;
+            }
+
+            .floating-card strong {
+                font-size: 12px;
+            }
+
+            .fitur-container,
+            .kategori-container,
+            .produk-container {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title h2 {
+                font-size: 23px;
+            }
+
+            .promo h2,
+            .ajakan h2 {
+                font-size: 22px;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+        <div class="container">
+
+            <h1 class="logo">TokoDita ♡</h1>
+
+            <nav>
+                <a href="index.html" class="active">
+                    🏠 Home
+                </a>    
+
+                <a href="produk.html">
+                     👜 Produk
+                </a>
+
+                <a href="keranjang.html">
+                    🛒 Keranjang (<span id="jumlahKeranjang">0</span>)
+                </a>
+
+                <a href="pesanan.html">
+                    📋 Pesanan Saya
+                </a>
+
+                <a href="kontak.html">
+                    ✉️ Kontak
+                </a>
+            </nav>
+            
+        </div>
+    </header>
+
+    <main>
+
+        <!-- HERO -->
+        <section class="hero">
+            <div class="container">
+
+                <div class="hero-text">
+
+                    <div class="label">
+                        ✨ WELCOME TO TOKODITA ✨
+                    </div>
+
+                    <h2>
+                        Tampil Cantik dan
+                        <span>Percaya Diri</span>
+                        Bersama TokoDita!
+                    </h2>
+
+                    <p>
+                        Temukan koleksi tas wanita dan aksesoris pilihan
+                        dengan desain cantik, kualitas terbaik, dan harga
+                        yang ramah di kantong. Lengkapi penampilanmu
+                        dengan produk favorit dari TokoDita.
+                    </p>
+
+                    <div class="hero-buttons">
+                        <a href="produk.html" class="btn">
+                            Belanja Sekarang ♡ →
+                        </a>
+
+                        <a href="#kategori" class="btn-outline">
+                            Jelajahi Kategori
+                        </a>
+                    </div>
+
+                    <div class="hero-note">
+                        ♡ Produk pilihan &nbsp; ✨ Harga bersahabat
+                        &nbsp; ♡ Belanja mudah
+                    </div>
+
+                </div>
+
+                <div class="hero-image">
+
+                    <div class="banner">
+                        <img src="images/banner.jpg"
+                             alt="Koleksi Tas dan Aksesoris TokoDita">
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- KEUNGGULAN -->
+        <section class="keunggulan">
+
+            <div class="section-title">
+                <span>COME ON</span>
+                <h2>Ayo Belanja di TokoDita? ♡</h2>
+                <p>Kami memberikan pengalaman belanja yang mudah dan menyenangkan.</p>
+            </div>
+
+            <div class="fitur-container">
+
+                <div class="fitur">
+                    <div class="ikon">👜</div>
+                    <h3>Produk Berkualitas</h3>
+                    <p>Koleksi tas dan aksesoris pilihan dengan desain menarik dan kualitas terbaik.</p>
+                </div>
+
+                <div class="fitur">
+                    <div class="ikon">💗</div>
+                    <h3>Harga Terjangkau</h3>
+                    <p>Dapatkan produk cantik dengan harga yang bersahabat di kantong.</p>
+                </div>
+
+                <div class="fitur">
+                    <div class="ikon">✨</div>
+                    <h3>Belanja Mudah</h3>
+                    <p>Jelajahi produk favoritmu dan lakukan pemesanan dengan mudah dan praktis.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- KATEGORI -->
+        <section class="kategori" id="kategori">
+
+            <div class="section-title">
+                <span>TokoDita</span>
+                <h2>Temukan Kategori Favoritmu</h2>
+                <p>Pilihan produk menarik untuk melengkapi penampilanmu.</p>
+            </div>
+
+            <div class="kategori-container">
+
+                <div class="kategori-card">
+                    <div class="ikon">👜</div>
+                    <h3>Tas Wanita</h3>
+                    <p>Berbagai pilihan tas untuk menemani aktivitas sehari-hari.</p>
+                </div>
+
+                <div class="kategori-card">
+                    <div class="ikon">🎀</div>
+                    <h3>Aksesoris</h3>
+                    <p>Aksesoris pilihan untuk mempercantik penampilanmu.</p>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- PRODUK PILIHAN -->
+        <section class="produk-pilihan">
+
+            <div class="section-title">
+                <span>FAVORITE COLLECTION</span>
+                <h2>Produk Pilihan TokoDita ♡</h2>
+                <p>Yuk, temukan produk yang cocok untuk gaya kamu!</p>
+            </div>
+
+            <div class="produk-container">
+
+                <div class="produk-card">
+                    <img src="images/produk1.jpg" alt="Tas wanita">
+                    <div class="produk-info">
+                        <span class="tag">KOLEKSI TAS</span>
+                        <h3>Elegant Shoulder Bag</h3>
+                        <p>Temukan di halaman produk ♡</p>
+                    </div>
+                </div>
+
+                <div class="produk-card">
+                    <img src="images/produk2.jpg" alt="Koleksi produk kedua">
+                    <div class="produk-info">
+                        <span class="tag">KOLEKSI PILIHAN</span>
+                        <h3>Fashion Collection</h3>
+                        <p>Temukan di halaman produk ♡</p>
+                    </div>
+                </div>
+
+                <div class="produk-card">
+                    <img src="images/produk5.jpg" alt="Koleksi produk ketiga">
+                    <div class="produk-info">
+                        <span class="tag">KOLEKSI AKSESORIS</span>
+                        <h3>Beautiful Accessories</h3>
+                        <p>Temukan di halaman produk ♡</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <a href="produk.html" class="btn produk-link">
+                Lihat Semua Produk →
+            </a>
+
+        </section>
+
+        <!-- PROMO -->
+        <section class="promo">
+
+            <div class="promo-container">
+
+                <h2>✨ Temukan Koleksi Favoritmu! ✨</h2>
+
+                <p>
+                    Percantik penampilanmu dengan koleksi tas dan aksesoris
+                    pilihan dari TokoDita. Temukan produk yang sesuai
+                    dengan gaya dan kebutuhanmu.
+                </p>
+
+                <a href="produk.html" class="btn">
+                    Mulai Belanja ♡
+                </a>
+
+            </div>
+
+        </section>
+
+        <!-- AJAKAN -->
+        <section class="ajakan">
+
+            <h2>Yuk, Belanja di TokoDita! 💗</h2>
+
+            <p>
+                Lengkapi penampilanmu bersama koleksi pilihan dari TokoDita.
+                Terima kasih sudah berkunjung!
+            </p>
+
+            <a href="produk.html" class="btn">
+                Lihat Koleksi Produk →
+            </a>
+
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+
+        <div class="footer-container">
+
+            <div>
+                <h3>TokoDita ♡</h3>
+                <p>
+                    Temukan koleksi tas wanita dan aksesoris pilihan
+                    dengan desain cantik dan harga bersahabat.
+                </p>
+            </div>
+
+            <div>
+                <h4>Menu</h4>
+                <a href="index.html">Home</a>
+                <a href="produk.html">Produk</a>
+                <a href="keranjang.html">Keranjang</a>
+                <a href="pesanan.html">Pesanan Saya</a>
+                <a href="kontak.html">Kontak</a>
+            </div>
+
+            <div>
+                <h4>Hubungi Kami</h4>
+                <p><i class="fa-solid fa-phone"></i> 0859787654321</p>
+                <p><i class="fa-solid fa-envelope"></i> tokodita@gmail.com</p>
+                <p><i class="fa-brands fa-instagram"></i> @Toko.Dita</p>
+                <p><i class="fa-brands fa-tiktok"></i> @Toko.DitaCollection</p>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            © 2026 TokoDita | Belanja Cantik, Hati Bahagia ♡
+        </div>
+
+    </footer>
+
+    <!-- JAVASCRIPT JUMLAH KERANJANG -->
+    <script>
+        function updateJumlahKeranjang() {
+            const keranjang = JSON.parse(
+                localStorage.getItem("keranjang")
+            ) || [];
+
+            const jumlah = keranjang.reduce(
+                (total, item) => total + Number(item.jumlah || 1),
+                0
+            );
+
+            document.getElementById("jumlahKeranjang").textContent = jumlah;
+        }
+
+        updateJumlahKeranjang();
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,1466 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Keranjang Belanja | TokoDita</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --pink: #ed2695;
+    --pink-dark: #b80b69;
+    --text: #742453;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background:
+        radial-gradient(circle at 8% 20%, #ffe1f2 0, transparent 23%),
+        radial-gradient(circle at 95% 40%, #ffd9ed 0, transparent 22%),
+        linear-gradient(135deg, #fff7fc, #ffedf7);
+    color: var(--text);
+    min-height: 100vh;
+}
+
+/* HEADER */
+header {
+    background: linear-gradient(90deg, #fd97cf, #f8abd7);
+    padding: 17px 4%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    box-shadow: 0 3px 15px rgba(220,45,137,.10);
+    position: relative;
+    z-index: 5;
+}
+
+.logo {
+    font-size: 27px;
+    font-weight: 800;
+    color: #b60069;
+    white-space: nowrap;
+}
+
+.logo i {
+    color: var(--pink);
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: #9f155f;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 10px 13px;
+    border-radius: 30px;
+    transition: .3s;
+}
+
+nav a i {
+    margin-right: 6px;
+}
+
+nav a:hover,
+nav a.active {
+    background: #fad8eb;
+    color: #c52b82;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 10px 17px;
+    border-radius: 25px;
+    transition: .3s;
+}
+
+/* JUDUL */
+.judul {
+    text-align: center;
+    padding: 32px 15px 28px;
+}
+
+.judul .hiasan {
+    color: #ed78b9;
+    font-size: 27px;
+    margin: 0 10px;
+}
+
+.judul h1 {
+    display: inline-block;
+    font-size: 34px;
+    color: #c90b79;
+    font-weight: 800;
+}
+
+.judul h1 i {
+    margin-right: 12px;
+}
+
+.judul p {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #a34d80;
+}
+
+/* CONTAINER */
+.container {
+    width: 92%;
+    max-width: 1250px;
+    margin: 0 auto 35px;
+}
+
+.layout {
+    display: grid;
+    grid-template-columns: 1.25fr 1fr;
+    gap: 22px;
+    align-items: start;
+}
+
+/* PANEL */
+.panel {
+    background: rgba(255,255,255,.92);
+    border: 2px solid #ffc4e3;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 8px 22px rgba(221,57,144,.10);
+}
+
+.panel-header {
+    padding: 18px 23px;
+    background: linear-gradient(90deg, #fff0f8, #ffe2f1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.panel-header h2 {
+    font-size: 20px;
+    color: #d41483;
+}
+
+.panel-header h2 i {
+    margin-right: 10px;
+}
+
+.panel-header span {
+    color: #b80b69;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+/* DAFTAR PRODUK */
+.daftar {
+    padding: 15px 20px;
+    min-height: 300px;
+}
+
+.item {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    padding: 16px 0;
+    border-bottom: 1px solid #f9d7e9;
+}
+
+.item:last-child {
+    border-bottom: none;
+}
+
+.item img {
+    width: 105px;
+    height: 105px;
+    border-radius: 14px;
+    object-fit: cover;
+    background: #fff0f8;
+}
+
+.detail {
+    flex: 1;
+    min-width: 0;
+}
+
+.detail h3 {
+    font-size: 14px;
+    margin-bottom: 6px;
+    color: #76254e;
+}
+
+.harga {
+    color: #d41483;
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.kontrol {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.kontrol button {
+    width: 29px;
+    height: 29px;
+    border: none;
+    border-radius: 8px;
+    background: #ffe0f0;
+    color: #bd176f;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+.kontrol button:hover {
+    background: #ef4ca2;
+    color: white;
+}
+
+.kontrol span {
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.subtotal-item {
+    font-size: 11px;
+    color: #a07896;
+    margin-top: 8px;
+}
+
+.hapus {
+    border: none;
+    background: none;
+    color: #e05291;
+    font-family: inherit;
+    font-size: 11px;
+    cursor: pointer;
+    margin-top: 6px;
+}
+
+.hapus:hover {
+    text-decoration: underline;
+}
+
+/* KERANJANG KOSONG */
+.kosong {
+    min-height: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 25px;
+}
+
+.ilustrasi {
+    width: 210px;
+    height: 190px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.lingkaran {
+    position: absolute;
+    width: 190px;
+    height: 80px;
+    background: #ffd2e9;
+    border-radius: 50%;
+    bottom: 12px;
+    transform: rotate(-7deg);
+}
+
+.tas {
+    position: relative;
+    width: 120px;
+    height: 110px;
+    background: linear-gradient(135deg, #ffb2d9, #f47fbd);
+    border-radius: 12px 12px 20px 20px;
+    transform: rotate(-7deg);
+    box-shadow: 0 12px 20px rgba(214,64,145,.17);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+.tas::before {
+    content: "";
+    position: absolute;
+    width: 50px;
+    height: 55px;
+    border: 7px solid #f47fbd;
+    border-bottom: none;
+    border-radius: 35px 35px 0 0;
+    top: -42px;
+}
+
+.tas i {
+    font-size: 34px;
+    color: white;
+}
+
+.bintang {
+    position: absolute;
+    color: #f18abf;
+    font-size: 23px;
+}
+
+.bintang.satu {
+    top: 20px;
+    left: 12px;
+}
+
+.bintang.dua {
+    top: 35px;
+    right: 10px;
+}
+
+.kosong h3 {
+    color: #c20d77;
+    font-size: 20px;
+    margin-bottom: 9px;
+}
+
+.kosong p {
+    color: #a07896;
+    font-size: 13px;
+    max-width: 350px;
+    line-height: 1.8;
+}
+
+.btn-belanja {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 25px;
+    color: white;
+    background: linear-gradient(100deg, #f2389b, #d91b83);
+    text-decoration: none;
+    border-radius: 30px;
+    font-size: 13px;
+    font-weight: 700;
+    box-shadow: 0 5px 14px rgba(222,30,132,.22);
+}
+
+/* RINGKASAN BELANJA */
+.ringkasan {
+    background: #fffafd;
+    border-top: 2px dashed #ffc4e3;
+    padding: 20px 23px;
+}
+
+.ringkasan h3 {
+    color: #c20d77;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.baris {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    font-size: 12px;
+    margin: 11px 0;
+}
+
+.baris strong {
+    font-weight: 700;
+}
+
+.gratis {
+    color: #219568;
+    font-weight: 700;
+}
+
+.garis {
+    border: none;
+    border-top: 1px dashed #f3bdd9;
+    margin: 14px 0;
+}
+
+.total {
+    font-size: 16px;
+    font-weight: 800;
+    color: #d41483;
+}
+
+/* FORM PEMESANAN */
+.form-body {
+    padding: 20px 23px;
+}
+
+.panduan {
+    background: linear-gradient(100deg, #ffe6f3, #fff1f8);
+    border: 1px solid #ffc4e3;
+    border-radius: 13px;
+    padding: 13px;
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.panduan i {
+    font-size: 30px;
+    color: #e51c91;
+}
+
+.panduan strong {
+    display: block;
+    font-size: 12px;
+    color: #c20d77;
+}
+
+.panduan p {
+    font-size: 10px;
+    color: #a07896;
+    margin-top: 4px;
+}
+
+.form-body label {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    margin: 14px 0 7px;
+    color: #78234e;
+}
+
+.form-body input,
+.form-body textarea,
+.form-body select {
+    width: 100%;
+    padding: 13px 14px;
+    border: 1.5px solid #ffc4e3;
+    border-radius: 12px;
+    outline: none;
+    background: #fffafd;
+    font-family: inherit;
+    font-size: 12px;
+    color: #742453;
+    transition: .2s;
+}
+
+.form-body input:focus,
+.form-body textarea:focus,
+.form-body select:focus {
+    border-color: #ed2695;
+    box-shadow: 0 0 0 3px rgba(237,38,149,.08);
+}
+
+.form-body textarea {
+    min-height: 95px;
+    resize: vertical;
+}
+
+/* DETAIL METODE PEMBAYARAN */
+.detail-pembayaran {
+    display: none;
+    margin-top: 12px;
+    padding: 15px;
+    background: #fff0f8;
+    border: 1px solid #ffc4e3;
+    border-radius: 13px;
+}
+
+.detail-pembayaran.aktif {
+    display: block;
+}
+
+.detail-pembayaran label {
+    margin-top: 0;
+}
+
+.detail-pembayaran select {
+    width: 100%;
+    padding: 13px 14px;
+    border: 1.5px solid #ffc4e3;
+    border-radius: 12px;
+    outline: none;
+    background: white;
+    font-family: inherit;
+    font-size: 12px;
+    color: #742453;
+}
+
+.detail-pembayaran p {
+    font-size: 10px;
+    color: #a07896;
+    margin-top: 8px;
+    line-height: 1.6;
+}
+
+.btn-pesan {
+    width: 100%;
+    border: none;
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 12px;
+    background: linear-gradient(100deg, #f2389b, #d91b83);
+    color: white;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 6px 15px rgba(222,30,132,.20);
+    transition: .3s;
+}
+
+.btn-pesan:hover {
+    transform: translateY(-2px);
+}
+
+.privasi {
+    background: #fff0f8;
+    border-radius: 12px;
+    padding: 12px;
+    margin-top: 13px;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.privasi i {
+    font-size: 23px;
+    color: #e51c91;
+}
+
+.privasi strong {
+    font-size: 10px;
+    color: #c20d77;
+}
+
+.privasi p {
+    font-size: 9px;
+    color: #a07896;
+    margin-top: 3px;
+}
+
+/* BANNER */
+.banner {
+    margin: 30px 0;
+    padding: 20px;
+    border: 2px solid #ffc4e3;
+    border-radius: 18px;
+    background: linear-gradient(100deg, #fff0f8, #ffe1f1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 22px;
+    text-align: center;
+}
+
+.banner i {
+    color: #ec4ca0;
+    font-size: 35px;
+}
+
+.banner h2 {
+    color: #d41483;
+    font-size: 20px;
+}
+
+.banner p {
+    color: #a07896;
+    font-size: 11px;
+    margin-top: 4px;
+}
+
+/* NOTIFIKASI */
+.notifikasi {
+    display: none;
+    padding: 11px;
+    border-radius: 9px;
+    background: #fff0f8;
+    color: #b80b69;
+    font-size: 11px;
+    margin-bottom: 13px;
+}
+
+/* POPUP SUKSES */
+.popup {
+    position: fixed;
+    inset: 0;
+    background: rgba(93,24,62,.42);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    padding: 18px;
+}
+
+.popup.aktif {
+    display: flex;
+}
+
+.popup-box {
+    width: 100%;
+    max-width: 390px;
+    background: white;
+    border: 2px solid #ff9bd0;
+    border-radius: 23px;
+    padding: 28px;
+    text-align: center;
+    box-shadow: 0 15px 45px rgba(183,23,109,.22);
+    animation: masuk .3s ease;
+    position: relative;
+}
+
+@keyframes masuk {
+    from {
+        opacity: 0;
+        transform: scale(.85);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.tutup {
+    position: absolute;
+    top: 12px;
+    right: 15px;
+    background: none;
+    border: none;
+    color: #e84b9d;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.success-icon {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    background: linear-gradient(130deg, #fa64b5, #dc1688);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 35px;
+    margin: 5px auto 17px;
+    box-shadow: 0 7px 17px rgba(220,22,136,.25);
+}
+
+.popup-box h2 {
+    color: #d41483;
+    font-size: 21px;
+    margin-bottom: 10px;
+}
+
+.popup-box p {
+    font-size: 12px;
+    color: #98718c;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.btn-lihat {
+    width: 100%;
+    border: none;
+    padding: 13px;
+    border-radius: 30px;
+    color: white;
+    background: linear-gradient(100deg, #f2389b, #d91b83);
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+/* FOOTER */
+footer {
+    background: linear-gradient(90deg, #b4377a, #cf4b94);
+    text-align: center;
+    padding: 22px 12px;
+    color: white;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+footer i {
+    margin: 0 10px;
+}
+
+/* RESPONSIVE */
+@media(max-width: 850px) {
+    .layout {
+        grid-template-columns: 1fr;
+    }
+
+    .daftar {
+        min-height: 250px;
+    }
+}
+
+@media(max-width: 600px) {
+    header {
+        flex-direction: column;
+        padding: 14px 10px;
+    }
+
+    .logo {
+        font-size: 24px;
+    }
+
+    nav {
+        justify-content: center;
+        gap: 4px;
+    }
+
+    nav a {
+        font-size: 10px;
+        padding: 8px;
+    }
+
+    nav a i {
+        margin-right: 3px;
+    }
+
+    .judul {
+        padding: 27px 12px;
+    }
+
+    .judul h1 {
+        font-size: 23px;
+    }
+
+    .judul .hiasan {
+        font-size: 18px;
+        margin: 0 3px;
+    }
+
+    .judul p {
+        font-size: 11px;
+    }
+
+    .container {
+        width: 94%;
+    }
+
+    .panel-header {
+        padding: 15px;
+    }
+
+    .panel-header h2 {
+        font-size: 15px;
+    }
+
+    .panel-header span {
+        font-size: 10px;
+    }
+
+    .daftar,
+    .form-body {
+        padding: 15px;
+    }
+
+    .ringkasan {
+        padding: 17px 15px;
+    }
+
+    .item {
+        gap: 10px;
+    }
+
+    .item img {
+        width: 75px;
+        height: 80px;
+    }
+
+    .detail h3 {
+        font-size: 12px;
+    }
+
+    .harga {
+        font-size: 12px;
+    }
+
+    .banner {
+        gap: 10px;
+        padding: 15px 8px;
+    }
+
+    .banner i {
+        font-size: 25px;
+    }
+
+    .banner h2 {
+        font-size: 14px;
+    }
+
+    .banner p {
+        font-size: 9px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+    <div class="logo">
+        TokoDita <i class="fa-regular fa-heart"></i>
+    </div>
+
+    <nav>
+        <a href="index.html">
+            🏠 Home
+        </a>
+
+        <a href="produk.html">
+            👜 Produk
+        </a>
+
+        <a href="keranjang.html" class="active">
+            🛒 Keranjang (<span id="jumlahKeranjang">0</span>)
+        </a>
+
+        <a href="pesanan.html">
+            📋 Pesanan Saya
+        </a>
+
+        <a href="kontak.html">
+            ✉️ Kontak
+        </a>
+    </nav>
+</header>
+
+<!-- JUDUL -->
+<section class="judul">
+    <div>
+        <span class="hiasan">♡</span>
+        <h1>
+            <i class="fa-solid fa-cart-shopping"></i>
+            Keranjang Belanja
+        </h1>
+        <span class="hiasan">♡</span>
+    </div>
+
+    <p>Cek kembali produk pilihanmu sebelum melanjutkan checkout ♡</p>
+</section>
+
+<main class="container">
+
+    <div class="layout">
+
+        <!-- BAGIAN KIRI: PRODUK DAN RINGKASAN -->
+        <section class="panel">
+
+            <div class="panel-header">
+                <h2>
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    Produk di Keranjang
+                </h2>
+
+                <span id="totalItem">Total Item: 0</span>
+            </div>
+
+            <!-- DAFTAR PRODUK -->
+            <div class="daftar" id="daftarKeranjang"></div>
+
+            <!-- RINGKASAN BELANJA -->
+            <div class="ringkasan" id="bagianTotal">
+
+                <h3>
+                    <i class="fa-solid fa-receipt"></i>
+                    Ringkasan Belanja
+                </h3>
+
+                <div class="baris">
+                    <span>Subtotal Produk</span>
+                    <strong id="subtotal">Rp0</strong>
+                </div>
+
+                <div class="baris">
+                    <span>Ongkos Kirim</span>
+                    <strong class="gratis">GRATIS</strong>
+                </div>
+
+                <hr class="garis">
+
+                <div class="baris total">
+                    <span>Total Pembayaran</span>
+                    <strong id="total">Rp0</strong>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- BAGIAN KANAN: FORM PEMESANAN -->
+        <section class="panel">
+
+            <div class="panel-header">
+                <h2>
+                    <i class="fa-regular fa-clipboard"></i>
+                    Form Pemesanan
+                </h2>
+            </div>
+
+            <div class="form-body">
+
+                <div class="panduan">
+                    <i class="fa-solid fa-box-open"></i>
+
+                    <div>
+                        <strong>Isi data berikut untuk melanjutkan pesananmu.</strong>
+                        <p>Pastikan semua data sudah benar ya ♡</p>
+                    </div>
+                </div>
+
+                <div class="notifikasi" id="notifikasi"></div>
+
+                <form id="formPemesanan">
+
+                    <label for="nama">Nama Lengkap *</label>
+                    <input
+                        type="text"
+                        id="nama"
+                        placeholder="Masukkan nama kamu"
+                        required
+                    >
+
+                    <label for="telepon">Nomor HP *</label>
+                    <input
+                        type="tel"
+                        id="telepon"
+                        placeholder="Masukkan nomor HP"
+                        required
+                    >
+
+                    <label for="alamat">Alamat Pengiriman *</label>
+                    <textarea
+                        id="alamat"
+                        placeholder="Masukkan alamat lengkap"
+                        required
+                    ></textarea>
+
+                    <label for="pembayaran">Metode Pembayaran *</label>
+                    <select id="pembayaran" required>
+                        <option value="">Pilih metode pembayaran</option>
+                        <option value="Transfer Bank">Transfer Bank</option>
+                        <option value="E-Wallet">E-Wallet</option>
+                        <option value="COD">COD (Bayar di Tempat)</option>
+                    </select>
+
+                    <!-- PILIHAN BANK ATAU E-WALLET -->
+                    <div class="detail-pembayaran" id="detailPembayaran">
+
+                        <label id="labelDetail" for="pilihanDetail">
+                            Pilih Bank
+                        </label>
+
+                        <select id="pilihanDetail">
+                            <option value="">Pilih pilihan pembayaran</option>
+                        </select>
+
+                        <p id="keteranganDetail">
+                            Silakan pilih metode pembayaran yang diinginkan.
+                        </p>
+
+                    </div>
+
+                    <button type="submit" class="btn-pesan">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        Buat Pesanan Sekarang ♡
+                    </button>
+
+                </form>
+
+                <div class="privasi">
+                    <i class="fa-solid fa-shield-halved"></i>
+
+                    <div>
+                        <strong>Data kamu aman bersama kami.</strong>
+                        <p>Informasi pemesanan digunakan untuk keperluan pesananmu.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+
+    <!-- BANNER -->
+    <section class="banner">
+        <i class="fa-regular fa-heart"></i>
+
+        <div>
+            <h2>Terima Kasih Sudah Berbelanja!</h2>
+            <p>Belanja cantik, hati bahagia bersama TokoDita ♡</p>
+        </div>
+
+        <i class="fa-regular fa-heart"></i>
+    </section>
+
+</main>
+
+<!-- POPUP SUKSES -->
+<div class="popup" id="popupSukses">
+
+    <div class="popup-box">
+
+        <button
+            class="tutup"
+            type="button"
+            onclick="tutupPopup()"
+        >×</button>
+
+        <div class="success-icon">
+            <i class="fa-solid fa-check"></i>
+        </div>
+
+        <h2>Pesanan Berhasil!</h2>
+
+        <p>
+            Terima kasih sudah berbelanja di TokoDita.
+            Pesanan kamu berhasil dibuat.
+            Selamat menunggu pesananmu! ♡
+        </p>
+
+        <button class="btn-lihat" onclick="lihatPesanan()">
+            <i class="fa-solid fa-bag-shopping"></i>
+            Lihat Pesanan Saya →
+        </button>
+
+    </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <i class="fa-solid fa-heart"></i>
+    © 2026 TokoDita | Belanja Cantik, Hati Bahagia
+    <i class="fa-solid fa-heart"></i>
+</footer>
+
+<script>
+
+// MENGAMBIL DATA KERANJANG
+let keranjang =
+    JSON.parse(localStorage.getItem("keranjang")) || [];
+
+// FORMAT RUPIAH
+function rupiah(angka) {
+    return "Rp" + Number(angka).toLocaleString("id-ID");
+}
+
+// MENGAMANKAN TEKS HTML
+function escapeHTML(teks) {
+    return String(teks).replace(/[&<>"']/g, function(karakter) {
+        return {
+            "&": "&amp;",
+            "<": "&lt;",
+            ">": "&gt;",
+            '"': "&quot;",
+            "'": "&#039;"
+        }[karakter];
+    });
+}
+
+// MENYIMPAN KERANJANG
+function simpanKeranjang() {
+    localStorage.setItem(
+        "keranjang",
+        JSON.stringify(keranjang)
+    );
+}
+
+// MENAMPILKAN PRODUK
+function tampilKeranjang() {
+
+    const daftar = document.getElementById("daftarKeranjang");
+
+    const jumlahItem = keranjang.reduce((total, item) => {
+        return total + Number(item.jumlah || 0);
+    }, 0);
+
+    document.getElementById("jumlahKeranjang").textContent =
+        jumlahItem;
+
+    document.getElementById("totalItem").textContent =
+        "Total Item: " + jumlahItem;
+
+    if (keranjang.length === 0) {
+
+        daftar.innerHTML = `
+            <div class="kosong">
+
+                <div class="ilustrasi">
+                    <div class="lingkaran"></div>
+
+                    <span class="bintang satu">✦</span>
+                    <span class="bintang dua">✦</span>
+
+                    <div class="tas">
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+                </div>
+
+                <h3>Keranjang Masih Kosong</h3>
+
+                <p>
+                    Yuk, pilih produk cantik favoritmu dan temukan
+                    barang impianmu di TokoDita!
+                </p>
+
+                <a href="produk.html" class="btn-belanja">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    Mulai Belanja ♡
+                </a>
+
+            </div>
+        `;
+
+        document.getElementById("bagianTotal").style.display = "none";
+
+        return;
+    }
+
+    document.getElementById("bagianTotal").style.display = "block";
+
+    daftar.innerHTML = keranjang.map((item, index) => `
+
+        <div class="item">
+
+            <img
+                src="${escapeHTML(item.gambar || '')}"
+                alt="${escapeHTML(item.nama || 'Produk')}"
+                onerror="this.style.display='none'"
+            >
+
+            <div class="detail">
+
+                <h3>${escapeHTML(item.nama || 'Produk')}</h3>
+
+                <div class="harga">
+                    ${rupiah(item.harga)}
+                </div>
+
+                <div class="kontrol">
+
+                    <button
+                        type="button"
+                        onclick="ubahJumlah(${index}, -1)"
+                    >−</button>
+
+                    <span>${Number(item.jumlah)}</span>
+
+                    <button
+                        type="button"
+                        onclick="ubahJumlah(${index}, 1)"
+                    >+</button>
+
+                </div>
+
+                <div class="subtotal-item">
+                    Subtotal:
+                    ${rupiah(Number(item.harga) * Number(item.jumlah))}
+                </div>
+
+                <button
+                    type="button"
+                    class="hapus"
+                    onclick="hapusProduk(${index})"
+                >
+                    <i class="fa-regular fa-trash-can"></i>
+                    Hapus Produk
+                </button>
+
+            </div>
+        </div>
+
+    `).join("");
+
+    hitungTotal();
+}
+
+// MENGUBAH JUMLAH PRODUK
+function ubahJumlah(index, perubahan) {
+
+    if (!keranjang[index]) return;
+
+    keranjang[index].jumlah =
+        Number(keranjang[index].jumlah) + perubahan;
+
+    if (keranjang[index].jumlah <= 0) {
+        keranjang.splice(index, 1);
+    }
+
+    simpanKeranjang();
+    tampilKeranjang();
+}
+
+// MENGHAPUS PRODUK
+function hapusProduk(index) {
+
+    keranjang.splice(index, 1);
+
+    simpanKeranjang();
+    tampilKeranjang();
+}
+
+// MENGHITUNG TOTAL BELANJA
+function hitungTotal() {
+
+    const subtotal = keranjang.reduce((total, item) => {
+        return total +
+            Number(item.harga) * Number(item.jumlah);
+    }, 0);
+
+    document.getElementById("subtotal").textContent =
+        rupiah(subtotal);
+
+    document.getElementById("total").textContent =
+        rupiah(subtotal);
+}
+
+// MENAMPILKAN NOTIFIKASI
+function tampilNotifikasi(pesan) {
+
+    const notifikasi =
+        document.getElementById("notifikasi");
+
+    notifikasi.textContent = pesan;
+    notifikasi.style.display = "block";
+}
+
+// =====================================
+// PILIHAN METODE PEMBAYARAN
+// =====================================
+
+const selectPembayaran =
+    document.getElementById("pembayaran");
+
+const detailPembayaran =
+    document.getElementById("detailPembayaran");
+
+const labelDetail =
+    document.getElementById("labelDetail");
+
+const pilihanDetail =
+    document.getElementById("pilihanDetail");
+
+const keteranganDetail =
+    document.getElementById("keteranganDetail");
+
+// DAFTAR BANK, TERMASUK SEABANK
+const daftarBank = [
+    "BCA",
+    "BRI",
+    "BNI",
+    "Mandiri",
+    "BSI",
+    "BTN",
+    "SeaBank"
+];
+
+// DAFTAR E-WALLET
+const daftarEwallet = [
+    "DANA",
+    "OVO",
+    "GoPay",
+    "ShopeePay",
+    "LinkAja"
+];
+
+// MENGATUR PILIHAN PEMBAYARAN
+selectPembayaran.addEventListener("change", function() {
+
+    const metode = selectPembayaran.value;
+
+    detailPembayaran.classList.remove("aktif");
+
+    pilihanDetail.innerHTML = "";
+    pilihanDetail.required = false;
+
+    if (metode === "Transfer Bank") {
+
+        detailPembayaran.classList.add("aktif");
+
+        labelDetail.textContent = "Pilih Bank *";
+
+        keteranganDetail.textContent =
+            "Silakan pilih bank yang akan digunakan untuk pembayaran.";
+
+        pilihanDetail.innerHTML =
+            '<option value="">Pilih Bank</option>' +
+            daftarBank.map(bank =>
+                `<option value="${bank}">${bank}</option>`
+            ).join("");
+
+        pilihanDetail.required = true;
+
+    } else if (metode === "E-Wallet") {
+
+        detailPembayaran.classList.add("aktif");
+
+        labelDetail.textContent = "Pilih E-Wallet *";
+
+        keteranganDetail.textContent =
+            "Silakan pilih dompet digital yang akan digunakan.";
+
+        pilihanDetail.innerHTML =
+            '<option value="">Pilih E-Wallet</option>' +
+            daftarEwallet.map(wallet =>
+                `<option value="${wallet}">${wallet}</option>`
+            ).join("");
+
+        pilihanDetail.required = true;
+    }
+
+});
+
+// =====================================
+// PROSES PEMESANAN
+// =====================================
+
+document.getElementById("formPemesanan")
+.addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    if (keranjang.length === 0) {
+        tampilNotifikasi(
+            "Keranjang masih kosong. Silakan pilih produk terlebih dahulu."
+        );
+        return;
+    }
+
+    const nama =
+        document.getElementById("nama").value.trim();
+
+    const telepon =
+        document.getElementById("telepon").value.trim();
+
+    const alamat =
+        document.getElementById("alamat").value.trim();
+
+    const pembayaran =
+        document.getElementById("pembayaran").value;
+
+    const pilihanPembayaran =
+        document.getElementById("pilihanDetail").value;
+
+    // VALIDASI DATA PEMESANAN
+    if (!nama || !telepon || !alamat || !pembayaran) {
+        tampilNotifikasi(
+            "Mohon lengkapi semua data pemesanan."
+        );
+        return;
+    }
+
+    // VALIDASI PILIHAN BANK ATAU E-WALLET
+    if (
+        (pembayaran === "Transfer Bank" ||
+         pembayaran === "E-Wallet") &&
+        !pilihanPembayaran
+    ) {
+        tampilNotifikasi(
+            "Mohon pilih bank atau e-wallet terlebih dahulu."
+        );
+        return;
+    }
+
+    // MENGHITUNG TOTAL
+    const total = keranjang.reduce((jumlah, item) => {
+        return jumlah +
+            Number(item.harga) * Number(item.jumlah);
+    }, 0);
+
+    // MEMBUAT DATA PESANAN
+    const pesananBaru = {
+
+        id: "TD" + Date.now(),
+
+        tanggal: new Date().toLocaleString("id-ID"),
+
+        nama: nama,
+
+        telepon: telepon,
+
+        alamat: alamat,
+
+        pembayaran: pembayaran,
+
+        detailPembayaran:
+            pembayaran === "COD"
+                ? "Bayar di Tempat"
+                : pilihanPembayaran,
+
+        produk: keranjang.map(item => ({...item})),
+
+        total: total,
+
+        status: "Menunggu Konfirmasi"
+    };
+
+    // MENYIMPAN PESANAN
+    let daftarPesanan =
+        JSON.parse(localStorage.getItem("daftarPesanan")) || [];
+
+    daftarPesanan.push(pesananBaru);
+
+    localStorage.setItem(
+        "daftarPesanan",
+        JSON.stringify(daftarPesanan)
+    );
+
+    // MENGOSONGKAN KERANJANG
+    localStorage.removeItem("keranjang");
+
+    keranjang = [];
+
+    document.getElementById("formPemesanan").reset();
+
+    // MENYEMBUNYIKAN DETAIL PEMBAYARAN
+    detailPembayaran.classList.remove("aktif");
+
+    pilihanDetail.innerHTML =
+        '<option value="">Pilih pilihan pembayaran</option>';
+
+    pilihanDetail.required = false;
+
+    tampilKeranjang();
+
+    // MENAMPILKAN POPUP
+    document.getElementById("popupSukses")
+        .classList.add("aktif");
+
+});
+
+// MENUTUP POPUP
+function tutupPopup() {
+
+    document.getElementById("popupSukses")
+        .classList.remove("aktif");
+
+}
+
+// MENUJU HALAMAN PESANAN
+function lihatPesanan() {
+    window.location.href = "pesanan.html";
+}
+
+// MENJALANKAN SAAT HALAMAN DIBUKA
+tampilKeranjang();
+
+</script>
+
+</body>
+</html>

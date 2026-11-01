@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontak - TokoDita</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #fff7fb;
+            color: #80516d;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        /* HEADER */
+        header {
+            background: linear-gradient(120deg, #f7a9d0, #fbd1e6);
+            padding: 18px 8%;
+            box-shadow: 0 4px 15px rgba(190,75,135,0.12);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo {
+            color: #8d245c;
+            font-size: 28px;
+            font-weight: 800;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: #713b59;
+            font-size: 13px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            transition: 0.3s;
+        }
+
+        nav a:hover,
+        nav a.aktif {
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .nav-icon {
+            font-size: 16px;
+        }
+
+        nav a {
+            color: #80516d;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 10px 17px;
+            border-radius: 25px;
+            transition: 0.3s;
+        }
+
+        nav a:hover,
+        nav a.active {
+            background: #ffe0ef;
+            color: #c52b82;
+        }
+
+        /* HERO */
+        .hero {
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+            padding: 75px 20px 85px;
+            background:
+                radial-gradient(circle at 10% 20%, #ffe0ef, transparent 28%),
+                radial-gradient(circle at 90% 80%, #f8c9e0, transparent 30%),
+                linear-gradient(120deg, #fff7fb, #ffedf6);
+        }
+
+        .hero::before,
+        .hero::after {
+            content: "♡";
+            position: absolute;
+            color: rgba(214, 70, 147, 0.12);
+            font-size: 120px;
+        }
+
+        .hero::before {
+            left: 7%;
+            top: 15px;
+            transform: rotate(-20deg);
+        }
+
+        .hero::after {
+            right: 8%;
+            bottom: 0;
+            transform: rotate(20deg);
+        }
+
+        .label-judul {
+            display: inline-block;
+            background: #ffe0ef;
+            color: #d63391;
+            padding: 9px 22px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 18px;
+        }
+
+        .hero h1 {
+            color: #8e285f;
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 span {
+            color: #e65aa5;
+        }
+
+        .hero p {
+            max-width: 650px;
+            margin: auto;
+            color: #8a6679;
+            font-size: 14px;
+            line-height: 1.9;
+        }
+
+        /* KEUNGGULAN */
+        .keunggulan {
+            max-width: 1050px;
+            margin: -35px auto 60px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .keunggulan-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            background: white;
+            border-radius: 22px;
+            box-shadow: 0 8px 30px rgba(190,75,135,0.10);
+            border: 1px solid #fce0ed;
+            overflow: hidden;
+        }
+
+        .keunggulan-item {
+            text-align: center;
+            padding: 25px 15px;
+            border-right: 1px solid #f8e2ed;
+        }
+
+        .keunggulan-item:last-child {
+            border-right: none;
+        }
+
+        .keunggulan-item .icon {
+            font-size: 25px;
+            margin-bottom: 8px;
+        }
+
+        .keunggulan-item h3 {
+            color: #bd4383;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .keunggulan-item p {
+            font-size: 11px;
+            color: #9a7b8c;
+        }
+
+        /* JUDUL KONTEN */
+        .section-title {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .section-title span {
+            color: #d65a9d;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .section-title h2 {
+            color: #8e285f;
+            font-size: 30px;
+            margin: 10px 0;
+        }
+
+        .section-title p {
+            font-size: 13px;
+            color: #a17d91;
+        }
+
+        /* KONTEN KONTAK */
+        .kontak-container {
+            width: 88%;
+            max-width: 1150px;
+            margin: 0 auto 80px;
+            display: grid;
+            grid-template-columns: 0.9fr 1.2fr;
+            gap: 28px;
+            align-items: stretch;
+        }
+
+        .info-kontak,
+        .form-kontak {
+            background: white;
+            padding: 32px;
+            border-radius: 24px;
+            box-shadow: 0 8px 30px rgba(190,75,135,0.09);
+            border: 1px solid #fce0ed;
+        }
+
+        .info-kontak h2,
+        .form-kontak h2 {
+            color: #8e285f;
+            font-size: 21px;
+            margin-bottom: 8px;
+        }
+
+        .deskripsi {
+            font-size: 12px;
+            color: #a17d91;
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+
+        /* INFORMASI */
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 15px;
+            margin-bottom: 13px;
+            background: #fff7fb;
+            border: 1px solid #fce3ef;
+            border-radius: 16px;
+            transition: 0.3s;
+        }
+
+        .info-item:hover {
+            transform: translateX(5px);
+            background: #ffedf6;
+            box-shadow: 0 5px 15px rgba(214,90,157,0.08);
+        }
+
+        .ikon {
+            width: 45px;
+            height: 45px;
+            min-width: 45px;
+            background: linear-gradient(135deg, #ffe0ef, #fbd0e5);
+            border-radius: 14px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+        }
+
+        .info-item strong {
+            display: block;
+            color: #bd4383;
+            font-size: 13px;
+            margin-bottom: 4px;
+        }
+
+        .info-item p {
+            color: #8a6679;
+            font-size: 11px;
+            line-height: 1.7;
+            overflow-wrap: anywhere;
+        }
+
+        /* JAM OPERASIONAL */
+        .jam-buka {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 18px;
+            background: linear-gradient(120deg, #f9c4de, #ffe8f3);
+            border: 1px solid #f7d0e3;
+        }
+
+        .jam-buka h3 {
+            color: #a82b70;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .jam-buka p {
+            font-size: 12px;
+            line-height: 1.9;
+            color: #80516d;
+        }
+
+        /* FORM */
+        .form-kontak {
+            padding: 35px;
+        }
+
+        .form-kontak label {
+            display: block;
+            margin: 16px 0 7px;
+            font-size: 12px;
+            font-weight: 600;
+            color: #80516d;
+        }
+
+        .form-kontak input,
+        .form-kontak textarea {
+            width: 100%;
+            padding: 13px 15px;
+            border: 1px solid #f0c3da;
+            border-radius: 12px;
+            outline: none;
+            font-family: inherit;
+            font-size: 12px;
+            color: #80516d;
+            background: #fffafd;
+            transition: 0.3s;
+        }
+
+        .form-kontak input:focus,
+        .form-kontak textarea:focus {
+            border-color: #e65aa5;
+            box-shadow: 0 0 0 3px rgba(236,76,167,0.10);
+            background: white;
+        }
+
+        .form-kontak input::placeholder,
+        .form-kontak textarea::placeholder {
+            color: #c5a5b7;
+        }
+
+        .form-kontak textarea {
+            height: 145px;
+            resize: vertical;
+        }
+
+        .btn-kirim {
+            width: 100%;
+            padding: 14px;
+            margin-top: 23px;
+            border: none;
+            border-radius: 30px;
+            background: linear-gradient(120deg, #ec75b6, #d63391);
+            color: white;
+            font-family: inherit;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(214,51,145,0.20);
+            transition: 0.3s;
+        }
+
+        .btn-kirim:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(214,51,145,0.30);
+        }
+
+        .catatan {
+            text-align: center;
+            font-size: 11px;
+            color: #b18ba2;
+            margin-top: 15px;
+        }
+
+        /* BANNER BAWAH */
+        .banner-bawah {
+            text-align: center;
+            padding: 50px 20px;
+            background: linear-gradient(120deg, #f8c8df, #ffe5f1);
+        }
+
+        .banner-bawah h2 {
+            color: #8e285f;
+            font-size: 25px;
+            margin-bottom: 10px;
+        }
+
+        .banner-bawah p {
+            color: #80516d;
+            font-size: 13px;
+        }
+
+        /* POPUP */
+        .popup {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(75,35,57,0.48);
+            justify-content: center;
+            align-items: center;
+            z-index: 99999;
+            padding: 20px;
+            backdrop-filter: blur(4px);
+        }
+
+        .popup-content {
+            background: white;
+            width: 100%;
+            max-width: 380px;
+            padding: 35px 25px;
+            border-radius: 25px;
+            text-align: center;
+            box-shadow: 0 10px 35px rgba(0,0,0,0.15);
+            animation: muncul 0.3s ease;
+        }
+
+        .popup-icon {
+            width: 75px;
+            height: 75px;
+            background: #ffe0ef;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 18px;
+            font-size: 35px;
+        }
+
+        .popup-content h2 {
+            color: #d63391;
+            margin-bottom: 10px;
+            font-size: 22px;
+        }
+
+        .popup-content p {
+            color: #80516d;
+            font-size: 13px;
+            margin-bottom: 22px;
+            line-height: 1.8;
+        }
+
+        .popup-content button {
+            padding: 11px 40px;
+            background: #d94694;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .popup-content button:hover {
+            background: #a82b70;
+        }
+
+        @keyframes muncul {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* FOOTER */
+        footer {
+            background: #8e285f;
+            color: white;
+            text-align: center;
+            padding: 27px 15px;
+        }
+
+        footer h3 {
+            font-size: 19px;
+            margin-bottom: 7px;
+        }
+
+        footer p {
+            font-size: 11px;
+            color: #f9d5e7;
+            line-height: 1.8;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            header {
+                padding: 18px 5%;
+            }
+
+            .header-container {
+                flex-direction: column;
+                gap: 14px;
+            }
+
+            nav {
+                justify-content: center;
+                gap: 15px;
+            }
+
+            nav a {
+                font-size: 11px;
+            }
+
+            .hero {
+                padding: 55px 20px 65px;
+            }
+
+            .hero h1 {
+                font-size: 30px;
+            }
+
+            .hero p {
+                font-size: 12px;
+            }
+
+            .keunggulan {
+                margin-bottom: 45px;
+            }
+
+            .keunggulan-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .keunggulan-item {
+                border-right: none;
+                border-bottom: 1px solid #f8e2ed;
+                padding: 18px;
+            }
+
+            .keunggulan-item:last-child {
+                border-bottom: none;
+            }
+
+            .section-title h2 {
+                font-size: 25px;
+            }
+
+            .kontak-container {
+                grid-template-columns: 1fr;
+                width: 90%;
+                gap: 20px;
+            }
+
+            .info-kontak,
+            .form-kontak {
+                padding: 24px;
+            }
+
+            .banner-bawah h2 {
+                font-size: 21px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="header-container">
+            <div class="logo">TokoDita ♡</div>
+
+            <nav>
+                <a href="index.html">
+                    🏠 Home
+                </a>
+
+                <a href="produk.html">
+                    👜 Produk
+                </a>
+
+                <a href="keranjang.html">
+                    🛒 Keranjang (<span id="jumlahKeranjang">0</span>)
+                </a>
+
+                <a href="pesanan.html">
+                    📋 Pesanan Saya
+                </a>
+
+                <a href="kontak.html" class="active">
+                    ✉️ Kontak
+                </a>
+            </nav>
+
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="label-judul">♡ CONTACT ♡</div>
+
+        <h1>Hubungi <span>Kami!</span></h1>
+
+        <p>
+            Punya pertanyaan, saran, atau ingin mengetahui lebih lanjut
+            tentang produk kami?
+            Jangan ragu untuk menghubungi TokoDita. ♡
+        </p>
+    </section>
+
+    <!-- KEUNGGULAN -->
+    <section class="keunggulan">
+        <div class="keunggulan-grid">
+
+            <div class="keunggulan-item">
+                <div class="icon">💌</div>
+                <h3>Respon Ramah</h3>
+                <p>Kami siap membantu pertanyaanmu.</p>
+            </div>
+
+            <div class="keunggulan-item">
+                <div class="icon">💗</div>
+                <h3>Pelayanan Terbaik</h3>
+                <p>Kenyamanan pelanggan adalah prioritas kami.</p>
+            </div>
+
+            <div class="keunggulan-item">
+                <div class="icon">✨</div>
+                <h3>Mudah Dihubungi</h3>
+                <p>Hubungi kami melalui kontak yang tersedia.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- JUDUL KONTEN -->
+    <div class="section-title">
+        <span>TOKO DITA</span>
+        <h2>Mari Terhubung dengan Kami ♡</h2>
+        <p>Kami siap mendengarkan pertanyaan dan pesan darimu.</p>
+    </div>
+
+    <!-- KONTEN KONTAK -->
+    <main class="kontak-container">
+
+        <!-- INFORMASI KONTAK -->
+        <section class="info-kontak">
+
+            <h2>Informasi Kontak 💌</h2>
+
+            <p class="deskripsi">
+                Temukan informasi TokoDita dan hubungi kami melalui kontak berikut.
+            </p>
+
+            <div class="info-item">
+                <div class="ikon">📍</div>
+                <div>
+                    <strong>Alamat Toko</strong>
+                    <p>Desa Sidorejo, Kecamatan Comal, Kabupaten Pemalang, Jawa Tengah.</p>
+                </div>
+            </div>
+
+            <div class="info-item">
+                <div class="ikon">📞</div>
+                <div>
+                    <strong>Nomor Telepon</strong>
+                    <p>085987654321</p>
+                </div>
+            </div>
+
+            <div class="info-item">
+                <div class="ikon">✉️</div>
+                <div>
+                    <strong>Email</strong>
+                    <p>tokodita@gmail.com</p>
+                </div>
+            </div>
+
+            <div class="info-item">
+                <div class="ikon">📸</div>
+                <div>
+                    <strong>Instagram</strong>
+                    <p>@Toko.Dita</p>
+                </div>
+            </div>
+
+            <!-- TIKTOK -->
+            <div class="info-item">
+                <div class="ikon">🎵</div>
+                <div>
+                    <strong>TikTok</strong>
+                    <p>@Toko.DitaCollection</p>
+                </div>
+            </div>
+
+            <div class="jam-buka">
+                <h3>⏰ Jam Operasional</h3>
+                <p>📅 Senin - Sabtu</p>
+                <p>🕗 08.00 - 20.00 WIB</p>
+                <p>♡ Kami siap melayani kamu!</p>
+            </div>
+
+        </section>
+
+        <!-- FORM KONTAK -->
+        <section class="form-kontak">
+
+            <h2>Kirim Pesan ♡</h2>
+
+            <p class="deskripsi">
+                Isi formulir di bawah ini untuk menyampaikan pesan kepada kami.
+            </p>
+
+            <form id="contactForm">
+
+                <label for="nama">Nama Lengkap</label>
+                <input
+                    type="text"
+                    id="nama"
+                    placeholder="Masukkan nama lengkap kamu"
+                    required
+                >
+
+                <label for="email">Alamat Email</label>
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Masukkan alamat email kamu"
+                    required
+                >
+
+                <label for="subjek">Subjek</label>
+                <input
+                    type="text"
+                    id="subjek"
+                    placeholder="Masukkan subjek pesan"
+                    required
+                >
+
+                <label for="pesan">Pesan</label>
+                <textarea
+                    id="pesan"
+                    placeholder="Tuliskan pesan kamu di sini..."
+                    required
+                ></textarea>
+
+                <button type="submit" class="btn-kirim">
+                    ✉️ Kirim Pesan Sekarang ♡
+                </button>
+
+                <p class="catatan">
+                    Terima kasih sudah menghubungi TokoDita 💗
+                </p>
+
+            </form>
+        </section>
+
+    </main>
+
+    <!-- BANNER BAWAH -->
+    <section class="banner-bawah">
+        <h2>Terima Kasih Telah Mengunjungi TokoDita! 💗</h2>
+        <p>Temukan gaya favoritmu dan nikmati pengalaman berbelanja bersama kami. ♡</p>
+    </section>
+
+    <!-- POPUP -->
+    <div class="popup" id="popup">
+        <div class="popup-content">
+
+            <div class="popup-icon">💗</div>
+
+            <h2>Terima Kasih!</h2>
+
+            <p>
+                Pesan Anda berhasil Dikirim.
+                <br>
+                Kami senang menerima pesan dari Anda!
+            </p>
+
+            <button type="button" onclick="tutupPopup()">
+                OK ♡
+            </button>
+
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        const form = document.getElementById("contactForm");
+        const popup = document.getElementById("popup");
+
+        form.addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            popup.style.display = "flex";
+            form.reset();
+        });
+
+        function tutupPopup() {
+            popup.style.display = "none";
+        }
+
+        popup.addEventListener("click", function(event) {
+            if (event.target === popup) {
+                tutupPopup();
+            }
+        });
+    </script>
+
+</body>
+</html>

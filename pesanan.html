@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pesanan Saya - TokoDita</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #fff7fb;
+    color: #593448;
+    min-height: 100vh;
+}
+
+/* HEADER */
+header {
+    background: linear-gradient(120deg, #f7a9d0, #fbd1e6);
+    padding: 16px 7%;
+    box-shadow: 0 3px 12px rgba(220, 45, 137, .10);
+}
+
+.logo {
+    color: #8e285f;
+    font-size: 25px;
+    font-weight: 800;
+}
+
+.logo i {
+    color: #d63391;
+}
+
+nav {
+    margin-top: 10px;
+    display: flex;
+    gap: 22px;
+    flex-wrap: wrap;
+}
+
+nav a {
+    text-decoration: none;
+    color: #713b59;
+    font-size: 12px;
+    font-weight: 600;
+    transition: .3s;
+}
+
+nav a:hover,
+nav a.active {
+    color: #d63391;
+}
+
+nav a {
+    color: #80516d;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 10px 17px;
+    border-radius: 25px;
+    transition: 0.3s;
+}
+
+nav a:hover,
+nav a.active {
+    background: #ffe0ef;
+    color: #c52b82;
+}
+
+/* BAGIAN UTAMA */
+main {
+    width: 90%;
+    max-width: 760px;
+    margin: 32px auto 45px;
+}
+
+/* JUDUL */
+.judul {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.judul h2 {
+    color: #8e285f;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.judul p {
+    color: #a07896;
+    font-size: 12px;
+    margin-top: 7px;
+}
+
+/* TOMBOL HAPUS */
+.aksi-riwayat {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 15px;
+}
+
+.btn-hapus-riwayat {
+    border: none;
+    background: #ffe1ed;
+    color: #c03970;
+    padding: 9px 15px;
+    border-radius: 20px;
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.btn-hapus-riwayat:hover {
+    background: #e94b91;
+    color: white;
+}
+
+/* KARTU PESANAN */
+.pesanan {
+    background: white;
+    padding: 20px 23px;
+    border: 1px solid #f6c5df;
+    border-radius: 14px;
+    margin: 0 auto 17px;
+    box-shadow: 0 4px 14px rgba(220, 45, 137, .08);
+    transition: .3s;
+}
+
+.pesanan:hover {
+    box-shadow: 0 6px 18px rgba(220, 45, 137, .13);
+}
+
+/* HEADER KARTU */
+.pesanan-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #f8d9e9;
+    margin-bottom: 12px;
+}
+
+.pesanan h3 {
+    color: #8e285f;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+/* INFORMASI */
+.info-pesanan p {
+    font-size: 11px;
+    line-height: 1.9;
+    color: #65445a;
+    overflow-wrap: anywhere;
+}
+
+.info-pesanan strong {
+    color: #783455;
+}
+
+/* DAFTAR PRODUK */
+.produk {
+    background: #fff3f9;
+    border: 1px solid #f9d8e9;
+    padding: 13px 15px;
+    border-radius: 10px;
+    margin: 14px 0;
+}
+
+.produk h4 {
+    color: #8e285f;
+    font-size: 12px;
+    margin-bottom: 8px;
+}
+
+.produk p {
+    font-size: 11px;
+    line-height: 1.8;
+    color: #75455f;
+}
+
+/* TOTAL PEMBAYARAN */
+.total {
+    color: #d63391;
+    font-size: 14px;
+    font-weight: 700;
+    margin-top: 12px;
+    padding-top: 10px;
+    border-top: 1px dashed #f2c4dc;
+}
+
+/* STATUS */
+.status {
+    display: inline-block;
+    background: #fff0bd;
+    color: #946700;
+    padding: 6px 11px;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: 700;
+    margin-top: 10px;
+}
+
+.status.selesai {
+    background: #d9f7e8;
+    color: #218354;
+}
+
+.status.dibatalkan {
+    background: #ffe0e5;
+    color: #c03955;
+}
+
+/* PESANAN KOSONG */
+.kosong {
+    background: white;
+    text-align: center;
+    padding: 40px 20px;
+    border: 1px solid #f6c5df;
+    border-radius: 15px;
+    box-shadow: 0 4px 14px rgba(220, 45, 137, .08);
+}
+
+.kosong .ikon {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    background: #ffe5f2;
+    color: #d63391;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 27px;
+    margin: 0 auto 15px;
+}
+
+.kosong h3 {
+    color: #8e285f;
+    font-size: 17px;
+    margin-bottom: 7px;
+}
+
+.kosong p {
+    color: #a07896;
+    font-size: 11px;
+    margin-bottom: 15px;
+}
+
+.kosong a {
+    display: inline-block;
+    background: linear-gradient(100deg, #f2389b, #d91b83);
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+/* BANNER */
+.banner {
+    background: linear-gradient(100deg, #ffe6f3, #ffd4e9);
+    border: 1px solid #f6c5df;
+    border-radius: 13px;
+    padding: 16px;
+    text-align: center;
+    margin-top: 25px;
+}
+
+.banner h3 {
+    color: #a00058;
+    font-size: 14px;
+}
+
+.banner p {
+    color: #a07896;
+    font-size: 10px;
+    margin-top: 5px;
+}
+
+/* POPUP */
+.popup-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(65, 25, 48, 0.45);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    z-index: 9999;
+}
+
+.popup-overlay.aktif {
+    display: flex;
+}
+
+.popup-box {
+    background: white;
+    width: 100%;
+    max-width: 350px;
+    padding: 28px 22px;
+    border-radius: 18px;
+    text-align: center;
+    box-shadow: 0 10px 35px rgba(100, 30, 70, 0.2);
+    animation: muncul .25s ease;
+}
+
+.popup-ikon {
+    width: 65px;
+    height: 65px;
+    margin: 0 auto 15px;
+    border-radius: 50%;
+    background: #ffe5f2;
+    color: #d63391;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 27px;
+}
+
+.popup-box h3 {
+    color: #8e285f;
+    font-size: 17px;
+    margin-bottom: 8px;
+}
+
+.popup-box p {
+    color: #98718c;
+    font-size: 12px;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.popup-tombol {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.popup-tombol button {
+    border: none;
+    padding: 10px 17px;
+    border-radius: 20px;
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn-batal {
+    background: #f5eaf0;
+    color: #75445f;
+}
+
+.btn-konfirmasi {
+    background: linear-gradient(100deg, #f2389b, #d91b83);
+    color: white;
+}
+
+@keyframes muncul {
+    from {
+        opacity: 0;
+        transform: scale(.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* FOOTER */
+footer {
+    background: linear-gradient(120deg, #8e285f, #bd4c89);
+    color: white;
+    text-align: center;
+    padding: 18px;
+    font-size: 11px;
+    margin-top: 45px;
+}
+
+/* RESPONSIVE HP */
+@media (max-width: 600px) {
+
+    header {
+        padding: 15px 5%;
+    }
+
+    .logo {
+        font-size: 22px;
+    }
+
+    nav {
+        gap: 13px;
+    }
+
+    nav a {
+        font-size: 10px;
+    }
+
+    main {
+        width: 93%;
+        margin: 25px auto 35px;
+    }
+
+    .judul h2 {
+        font-size: 20px;
+    }
+
+    .pesanan {
+        padding: 15px;
+    }
+
+    .pesanan h3 {
+        font-size: 12px;
+    }
+
+    .info-pesanan p,
+    .produk p {
+        font-size: 10px;
+    }
+
+    .total {
+        font-size: 13px;
+    }
+
+    .banner h3 {
+        font-size: 12px;
+    }
+
+    .aksi-riwayat {
+        margin-bottom: 12px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+
+    <div class="logo">
+        TokoDita <i class="fa-regular fa-heart"></i>
+    </div>
+
+    <nav>
+        <a href="index.html">
+            🏠 Home
+        </a>
+
+        <a href="produk.html">
+            👜 Produk
+        </a>
+
+        <a href="keranjang.html">
+            🛒 Keranjang (<span id="jumlahKeranjang">0</span>)
+        </a>
+
+        <a href="pesanan.html" class="active">
+            📋 Pesanan Saya
+        </a>
+
+        <a href="kontak.html">
+            ✉️ Kontak
+        </a>
+    </nav>
+
+</header>
+
+<!-- KONTEN UTAMA -->
+<main>
+
+    <section class="judul">
+        <h2>
+            <i class="fa-solid fa-box-open"></i>
+            Riwayat Pesanan Saya
+        </h2>
+
+        <p>Lihat dan periksa riwayat pesananmu di TokoDita ♡</p>
+    </section>
+
+    <!-- TOMBOL HAPUS -->
+    <div class="aksi-riwayat" id="aksiRiwayat">
+
+        <button
+            class="btn-hapus-riwayat"
+            onclick="hapusRiwayat()"
+        >
+            <i class="fa-solid fa-trash-can"></i>
+            Hapus Riwayat Pesanan
+        </button>
+
+    </div>
+
+    <!-- DAFTAR PESANAN -->
+    <div id="daftarPesanan"></div>
+
+    <!-- BANNER -->
+    <section class="banner">
+        <h3>
+            <i class="fa-regular fa-heart"></i>
+            Terima Kasih Sudah Berbelanja!
+        </h3>
+
+        <p>Belanja cantik, hati bahagia bersama TokoDita ♡</p>
+    </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+    <p>
+        © 2026 TokoDita | Belanja Cantik, Hati Bahagia.
+        <i class="fa-solid fa-heart"></i>
+    </p>
+</footer>
+
+<!-- POPUP KONFIRMASI DAN NOTIFIKASI -->
+<div class="popup-overlay" id="popupOverlay">
+
+    <div class="popup-box">
+
+        <div class="popup-ikon" id="popupIkon">
+            <i class="fa-solid fa-trash-can"></i>
+        </div>
+
+        <h3 id="popupJudul">Hapus Riwayat Pesanan?</h3>
+
+        <p id="popupPesan">
+            Apakah kamu yakin ingin menghapus semua riwayat pesanan?
+        </p>
+
+        <div class="popup-tombol" id="popupTombol">
+
+            <button class="btn-batal" onclick="tutupPopup()">
+                Batal
+            </button>
+
+            <button class="btn-konfirmasi" onclick="konfirmasiHapus()">
+                Ya, Hapus
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+// MENGAMBIL DATA PESANAN
+let pesanan = JSON.parse(
+    localStorage.getItem("daftarPesanan")
+) || [];
+
+// FORMAT RUPIAH
+function rupiah(angka) {
+    return "Rp" + Number(angka || 0).toLocaleString("id-ID");
+}
+
+// MENGAMANKAN TEKS HTML
+function escapeHTML(teks) {
+    return String(teks ?? "").replace(/[&<>"']/g, function(karakter) {
+        return {
+            "&": "&amp;",
+            "<": "&lt;",
+            ">": "&gt;",
+            '"': "&quot;",
+            "'": "&#039;"
+        }[karakter];
+    });
+}
+
+// MENAMPILKAN PESANAN
+function tampilkanPesanan() {
+
+    const daftar = document.getElementById("daftarPesanan");
+    const tombolHapus = document.getElementById("aksiRiwayat");
+
+    // JIKA BELUM ADA PESANAN
+    if (pesanan.length === 0) {
+
+        daftar.innerHTML = `
+            <div class="kosong">
+
+                <div class="ikon">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                </div>
+
+                <h3>Belum Ada Pesanan 💗</h3>
+
+                <p>
+                    Kamu belum melakukan pemesanan.
+                    Yuk, pilih produk favoritmu!
+                </p>
+
+                <a href="produk.html">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    Mulai Belanja Sekarang
+                </a>
+
+            </div>
+        `;
+
+        tombolHapus.style.display = "none";
+
+        return;
+    }
+
+    tombolHapus.style.display = "flex";
+
+    // MENAMPILKAN SEMUA PESANAN
+    daftar.innerHTML = [...pesanan].reverse().map(item => {
+
+        const daftarProduk = Array.isArray(item.produk)
+            ? item.produk
+            : [];
+
+        const status = String(
+            item.status || "Menunggu Konfirmasi"
+        );
+
+        let kelasStatus = "";
+
+        if (status.toLowerCase().includes("selesai")) {
+            kelasStatus = "selesai";
+        } else if (status.toLowerCase().includes("batal")) {
+            kelasStatus = "dibatalkan";
+        }
+
+        return `
+
+            <div class="pesanan">
+
+                <div class="pesanan-header">
+
+                    <h3>
+                        <i class="fa-solid fa-receipt"></i>
+                        Pesanan #${escapeHTML(item.id)}
+                    </h3>
+
+                </div>
+
+                <div class="info-pesanan">
+
+                    <p>
+                        <strong>Tanggal:</strong>
+                        ${escapeHTML(item.tanggal)}
+                    </p>
+
+                    <p>
+                        <strong>Nama:</strong>
+                        ${escapeHTML(item.nama)}
+                    </p>
+
+                    <p>
+                        <strong>Nomor HP:</strong>
+                        ${escapeHTML(item.telepon)}
+                    </p>
+
+                    <p>
+                        <strong>Alamat:</strong>
+                        ${escapeHTML(item.alamat)}
+                    </p>
+
+                    <p>
+                        <strong>Pembayaran:</strong>
+                        ${escapeHTML(item.pembayaran)}
+                    </p>
+
+                </div>
+
+                <div class="produk">
+
+                    <h4>
+                        <i class="fa-solid fa-bag-shopping"></i>
+                        Daftar Produk:
+                    </h4>
+
+                    ${
+                        daftarProduk.length > 0
+                        ? daftarProduk.map(p => `
+                            <p>
+                                ${escapeHTML(p.nama)}
+                                × ${Number(p.jumlah)}
+                                — ${rupiah(
+                                    Number(p.harga) * Number(p.jumlah)
+                                )}
+                            </p>
+                        `).join("")
+                        : `<p>Informasi produk tidak tersedia.</p>`
+                    }
+
+                </div>
+
+                <p class="total">
+                    Total Pembayaran:
+                    ${rupiah(item.total)}
+                </p>
+
+                <span class="status ${kelasStatus}">
+                    <i class="fa-solid fa-clock"></i>
+                    ${escapeHTML(status)}
+                </span>
+
+            </div>
+
+        `;
+
+    }).join("");
+
+}
+
+// MEMBUKA POPUP
+function bukaPopup() {
+    document.getElementById("popupOverlay").classList.add("aktif");
+}
+
+// MENUTUP POPUP
+function tutupPopup() {
+    document.getElementById("popupOverlay").classList.remove("aktif");
+}
+
+// TOMBOL HAPUS RIWAYAT
+function hapusRiwayat() {
+
+    if (pesanan.length === 0) {
+        return;
+    }
+
+    // MENGATUR ULANG POPUP KONFIRMASI
+    document.getElementById("popupIkon").innerHTML =
+        '<i class="fa-solid fa-trash-can"></i>';
+
+    document.getElementById("popupJudul").textContent =
+        "Hapus Riwayat Pesanan?";
+
+    document.getElementById("popupPesan").textContent =
+        "Apakah kamu yakin ingin menghapus semua riwayat pesanan?";
+
+    document.getElementById("popupTombol").innerHTML = `
+        <button class="btn-batal" onclick="tutupPopup()">
+            Batal
+        </button>
+
+        <button class="btn-konfirmasi" onclick="konfirmasiHapus()">
+            Ya, Hapus
+        </button>
+    `;
+
+    bukaPopup();
+}
+
+// KONFIRMASI HAPUS
+function konfirmasiHapus() {
+
+    // MENGHAPUS DATA PESANAN
+    localStorage.removeItem("daftarPesanan");
+
+    pesanan = [];
+
+    // MEMPERBARUI HALAMAN
+    tampilkanPesanan();
+
+    // MENGUBAH ISI POPUP MENJADI NOTIFIKASI BERHASIL
+    document.getElementById("popupIkon").innerHTML =
+        '<i class="fa-solid fa-check"></i>';
+
+    document.getElementById("popupJudul").textContent =
+        "Berhasil Dihapus!";
+
+    document.getElementById("popupPesan").textContent =
+        "Semua riwayat pesanan berhasil dihapus.";
+
+    document.getElementById("popupTombol").innerHTML = `
+        <button class="btn-konfirmasi" onclick="tutupPopup()">
+            OK
+        </button>
+    `;
+
+    // MENAMPILKAN NOTIFIKASI DI TENGAH
+    bukaPopup();
+
+}
+
+// MENJALANKAN FUNGSI
+tampilkanPesanan();
+
+</script>
+
+</body>
+</html>

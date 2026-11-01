@@ -1,0 +1,1100 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produk - TokoDita</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #fff8fc;
+            color: #593448;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        /* HEADER */
+        .header {
+            background: linear-gradient(120deg, #f7a9d0, #fbd1e6);
+            padding: 18px 8%;
+            box-shadow: 0 4px 15px rgba(190,75,135,0.12);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header .container {
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo {
+            color: #8d245c;
+            font-size: 29px;
+            font-weight: 800;
+            white-space: nowrap;
+        }
+
+        nav {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        nav a {
+            color: #713b59;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 10px 12px;
+            border-radius: 25px;
+            transition: 0.3s;
+        }
+
+        nav a:hover,
+        nav a.active {
+            background: #ffe0ef;
+            color: #c52b82;
+        }
+
+        /* HALAMAN PRODUK */
+        .produk {
+            padding: 55px 5% 75px;
+            background:
+                radial-gradient(circle at 5% 5%, #ffe2f0, transparent 25%),
+                radial-gradient(circle at 95% 50%, #fce0ed, transparent 25%),
+                #fff8fc;
+        }
+
+        .produk .container {
+            max-width: 1250px;
+            margin: auto;
+        }
+
+        /* JUDUL */
+        .judul-produk {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .label {
+            display: inline-block;
+            background: #ffe1ef;
+            color: #bd4383;
+            padding: 9px 22px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 18px;
+        }
+
+        .judul-produk h2 {
+            color: #8e285f;
+            font-size: clamp(28px, 4vw, 38px);
+            margin-bottom: 12px;
+        }
+
+        .judul-produk h2 span {
+            color: #df6da8;
+        }
+
+        .judul-produk p {
+            color: #8a6679;
+            font-size: 14px;
+            line-height: 1.8;
+            max-width: 650px;
+            margin: auto;
+        }
+
+        /* FILTER PRODUK */
+        .filter-produk {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 0 auto 35px;
+        }
+
+        .filter-produk button {
+            border: 1px solid #f0bfd8;
+            background: white;
+            color: #a83270;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font: 700 13px 'Poppins', sans-serif;
+            cursor: pointer;
+            transition: 0.25s;
+            box-shadow: 0 4px 12px rgba(190,75,135,0.06);
+        }
+
+        .filter-produk button:hover,
+        .filter-produk button.aktif {
+            color: white;
+            border-color: #d94694;
+            background: linear-gradient(135deg, #e96bab, #d94694);
+            box-shadow: 0 7px 18px rgba(217,70,148,0.2);
+            transform: translateY(-2px);
+        }
+
+        .jumlah-produk {
+            text-align: center;
+            color: #98778a;
+            font-size: 12px;
+            margin-bottom: 30px;
+        }
+
+        /* PEMBUNGKUS KATEGORI */
+        .daftar-kategori {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 28px;
+            align-items: start;
+        }
+
+        /* SAAT HANYA TAS ATAU AKSESORIS DIPILIH */
+        .daftar-kategori.satu-kategori {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .daftar-kategori.satu-kategori .bagian-kategori {
+            width: 100%;
+            max-width: 760px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .bagian-kategori {
+            min-width: 0;
+            background: rgba(255,255,255,0.65);
+            padding: 18px;
+            border-radius: 22px;
+            border: 1px solid #fce3ef;
+            margin-bottom: 25px;
+            scroll-margin-top: 110px;
+        }
+
+        .bagian-kategori[hidden] {
+            display: none !important;
+        }
+
+        /* JUDUL KATEGORI */
+        .judul-kategori {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .judul-kategori .ikon {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .judul-kategori h2 {
+            color: #8e285f;
+            font-size: 23px;
+            margin-bottom: 8px;
+        }
+
+        .judul-kategori p {
+            color: #98778a;
+            font-size: 12px;
+        }
+
+        .garis {
+            width: 65px;
+            height: 4px;
+            border-radius: 10px;
+            background: linear-gradient(90deg, #e96bab, #f8c8df);
+            margin: 15px auto 0;
+        }
+
+        /* GRID PRODUK */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+            align-items: stretch;
+            width: 100%;
+        }
+
+        /* KARTU PRODUK */
+        .card {
+            background: white;
+            border-radius: 17px;
+            overflow: hidden;
+            box-shadow: 0 5px 18px rgba(190,75,135,0.10);
+            transition: 0.3s;
+            border: 1px solid #fce3ef;
+            text-align: center;
+            padding-bottom: 16px;
+            position: relative;
+            min-width: 0;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 13px 25px rgba(190,75,135,0.17);
+        }
+
+        .gambar-produk {
+            width: 100%;
+            height: 175px;
+            padding: 10px;
+            background: linear-gradient(135deg, #ffeaf4, #fff5fa);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gambar-produk img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 12px;
+            transition: 0.4s;
+        }
+
+        .card:hover .gambar-produk img {
+            transform: scale(1.05);
+        }
+
+        .badge-produk {
+            position: absolute;
+            top: 13px;
+            left: 13px;
+            background: #e96bab;
+            color: white;
+            font-size: 9px;
+            font-weight: 700;
+            padding: 5px 10px;
+            border-radius: 20px;
+            z-index: 2;
+        }
+
+        .card h3 {
+            color: #8e285f;
+            font-size: 13px;
+            margin: 14px 8px 7px;
+        }
+
+        .card p {
+            color: #8a6679;
+            font-size: 10px;
+            line-height: 1.7;
+            min-height: 43px;
+            padding: 0 10px;
+        }
+
+        .harga {
+            display: block;
+            color: #d63391;
+            font-size: 15px;
+            font-weight: 800;
+            margin: 11px 0;
+        }
+
+        /* TOMBOL PRODUK */
+        .tombol-produk {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            padding: 0 10px;
+        }
+
+        .tombol-produk button {
+            width: 100%;
+            border: none;
+            padding: 10px 6px;
+            border-radius: 25px;
+            font-family: inherit;
+            font-size: 10px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-keranjang {
+            background: #ffe4f1;
+            color: #a82b70;
+            border: 1px solid #f6c3dc !important;
+        }
+
+        .btn-keranjang:hover {
+            background: #f9c5df;
+            transform: translateY(-2px);
+        }
+
+        .btn-beli {
+            background: linear-gradient(135deg, #e96bab, #d94694);
+            color: white;
+            box-shadow: 0 5px 12px rgba(217,70,148,0.18);
+        }
+
+        .btn-beli:hover {
+            background: #a82b70;
+            transform: translateY(-2px);
+        }
+
+        /* AJAKAN */
+        .ajakan {
+            background: linear-gradient(120deg, #f9c4de, #fce2ef);
+            text-align: center;
+            padding: 55px 20px;
+        }
+
+        .ajakan h2 {
+            color: #8e285f;
+            font-size: 27px;
+            margin-bottom: 12px;
+        }
+
+        .ajakan p {
+            color: #80516d;
+            font-size: 14px;
+            margin-bottom: 23px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #d94694;
+            color: white;
+            padding: 13px 28px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 700;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #a82b70;
+            transform: translateY(-3px);
+        }
+
+        /* FOOTER */
+        footer {
+            background: #8e285f;
+            color: white;
+            text-align: center;
+            padding: 25px 15px;
+            font-size: 13px;
+        }
+
+        /* POPUP */
+        .popup-keranjang {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(75,30,55,0.48);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .popup-keranjang.aktif {
+            display: flex;
+        }
+
+        .popup-box {
+            background: white;
+            width: 100%;
+            max-width: 380px;
+            padding: 35px 25px;
+            border-radius: 25px;
+            text-align: center;
+            box-shadow: 0 15px 40px rgba(120,40,85,0.2);
+            animation: muncul 0.3s ease;
+        }
+
+        @keyframes muncul {
+            from {
+                opacity: 0;
+                transform: translateY(20px) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .popup-icon {
+            width: 75px;
+            height: 75px;
+            margin: 0 auto 18px;
+            background: #ffe4f1;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 38px;
+        }
+
+        .popup-box h2 {
+            color: #a82b70;
+            font-size: 21px;
+            margin-bottom: 10px;
+        }
+
+        .popup-box p {
+            color: #80516d;
+            font-size: 13px;
+            line-height: 1.8;
+            margin-bottom: 22px;
+        }
+
+        .popup-actions {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .popup-actions button,
+        .popup-actions a {
+            border: none;
+            padding: 11px 17px;
+            border-radius: 25px;
+            font-family: inherit;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .btn-popup {
+            background: #d94694;
+            color: white;
+        }
+
+        .btn-tutup {
+            background: #ffe4f1;
+            color: #a82b70;
+        }
+
+        /* RESPONSIVE TABLET */
+        @media (max-width: 900px) {
+            .header {
+                padding: 16px 5%;
+            }
+
+            .header .container {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            nav {
+                justify-content: center;
+                gap: 10px;
+            }
+
+            .daftar-kategori {
+                gap: 15px;
+            }
+
+            .bagian-kategori {
+                padding: 13px;
+            }
+
+            .gambar-produk {
+                height: 155px;
+            }
+        }
+
+        /* RESPONSIVE HP */
+        @media (max-width: 600px) {
+            .produk {
+                padding: 40px 4% 55px;
+            }
+
+            .judul-produk {
+                margin-bottom: 30px;
+            }
+
+            .judul-produk p {
+                font-size: 12px;
+            }
+
+            .filter-produk {
+                gap: 8px;
+                margin-bottom: 30px;
+            }
+
+            .filter-produk button {
+                padding: 10px 13px;
+                font-size: 10px;
+            }
+
+            /* Kategori ditumpuk ke bawah di HP */
+            .daftar-kategori {
+                grid-template-columns: 1fr;
+                gap: 5px;
+            }
+
+            .daftar-kategori.satu-kategori {
+                display: flex;
+            }
+
+            .daftar-kategori.satu-kategori .bagian-kategori {
+                max-width: 100%;
+            }
+
+            .bagian-kategori {
+                padding: 12px;
+                margin-bottom: 20px;
+            }
+
+            .judul-kategori h2 {
+                font-size: 20px;
+            }
+
+            /* Tetap dua produk berjajar */
+            .product-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 11px;
+            }
+
+            .gambar-produk {
+                height: 140px;
+                padding: 8px;
+            }
+
+            .card {
+                border-radius: 14px;
+            }
+
+            .card h3 {
+                font-size: 11px;
+            }
+
+            .card p {
+                font-size: 9px;
+                min-height: 45px;
+            }
+
+            .harga {
+                font-size: 13px;
+            }
+
+            .tombol-produk {
+                padding: 0 7px;
+            }
+
+            .tombol-produk button {
+                font-size: 8px;
+                padding: 9px 4px;
+            }
+
+            .badge-produk {
+                font-size: 8px;
+                top: 10px;
+                left: 10px;
+            }
+
+            .ajakan h2 {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">TokoDita ♡</h1>
+
+            <nav>
+                <a href="index.html">🏠 Home</a>
+
+                <a href="produk.html" class="active">👜 Produk</a>
+
+                <a href="keranjang.html">
+                    🛒 Keranjang (<span id="jumlahKeranjang">0</span>)
+                </a>
+
+                <a href="pesanan.html">📋 Pesanan Saya</a>
+
+                <a href="kontak.html">✉️ Kontak</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+
+        <section class="produk">
+            <div class="container">
+
+                <!-- JUDUL -->
+                <div class="judul-produk">
+                    <div class="label">♡ WELCOME TO TOKODITA ♡</div>
+
+                    <h2>Koleksi Cantik <span>TokoDita</span></h2>
+
+                    <p>
+                        Temukan koleksi tas wanita dan aksesoris pilihan
+                        dengan desain menarik untuk melengkapi penampilanmu.
+                        Pilih produk favoritmu dan belanja sekarang! ♡
+                    </p>
+                </div>
+
+                <!-- FILTER KATEGORI -->
+                <div class="filter-produk">
+
+                    <button type="button" class="aktif" data-filter="semua">
+                        ✨ Semua Produk
+                    </button>
+
+                    <button type="button" data-filter="tas">
+                        👜 Tas Wanita
+                    </button>
+
+                    <button type="button" data-filter="aksesoris">
+                        🎀 Aksesoris
+                    </button>
+
+                </div>
+
+                <p class="jumlah-produk" id="jumlahProduk">
+                    Menampilkan 8 produk
+                </p>
+
+                <!-- PEMBUNGKUS SEMUA KATEGORI -->
+                <div class="daftar-kategori" id="daftarKategori">
+
+                    <!-- KATEGORI TAS WANITA -->
+                    <section class="bagian-kategori" id="tas" data-kategori="tas">
+
+                        <div class="judul-kategori">
+                            <div class="ikon">👜</div>
+                            <h2>Koleksi Tas Wanita</h2>
+                            <p>Tas cantik untuk menemani berbagai aktivitasmu.</p>
+                            <div class="garis"></div>
+                        </div>
+
+                        <div class="product-grid">
+
+                            <!-- PRODUK 1 -->
+                            <article class="card">
+                                <div class="gambar-produk">
+                                    <span class="badge-produk">Best Seller</span>
+                                    <img src="images/produk1.jpg" alt="Elegant Shoulder Bag">
+                                </div>
+
+                                <h3>Elegant Shoulder Bag</h3>
+                                <p>Tas wanita cantik dan elegan untuk berbagai kegiatan.</p>
+                                <strong class="harga">Rp230.000</strong>
+
+                                <div class="tombol-produk">
+                                    <button class="btn-keranjang" onclick="tambahKeranjang('Elegant Shoulder Bag',230000,'images/produk1.jpg')">
+                                        🛒 Tambah ke Keranjang
+                                    </button>
+
+                                    <button class="btn-beli" onclick="beliSekarang('Elegant Shoulder Bag',230000,'images/produk1.jpg')">
+                                        ♡ Beli Sekarang
+                                    </button>
+                                </div>
+                            </article>
+
+                            <!-- PRODUK 2 -->
+                            <article class="card">
+                                <div class="gambar-produk">
+                                    <span class="badge-produk">Favorit</span>
+                                    <img src="images/produk2.jpg" alt="Mini Fashion Bag">
+                                </div>
+
+                                <h3>Mini Fashion Bag</h3>
+                                <p>Tas mini dengan desain stylish untuk melengkapi penampilan.</p>
+                                <strong class="harga">Rp300.000</strong>
+
+                                <div class="tombol-produk">
+                                    <button class="btn-keranjang" onclick="tambahKeranjang('Mini Fashion Bag',300000,'images/produk2.jpg')">
+                                        🛒 Tambah ke Keranjang
+                                    </button>
+
+                                    <button class="btn-beli" onclick="beliSekarang('Mini Fashion Bag',300000,'images/produk2.jpg')">
+                                        ♡ Beli Sekarang
+                                    </button>
+                                </div>
+                            </article>
+
+                            <!-- PRODUK 3 -->
+                            <article class="card">
+                                <div class="gambar-produk">
+                                    <img src="images/produk3.jpg" alt="Flower Drawstring Bag">
+                                </div>
+
+                                <h3>Flower Drawstring Bag</h3>
+                                <p>Tas kecil dengan desain bunga yang cantik.</p>
+                                <strong class="harga">Rp190.000</strong>
+
+                                <div class="tombol-produk">
+                                    <button class="btn-keranjang" onclick="tambahKeranjang('Flower Drawstring Bag',190000,'images/produk3.jpg')">
+                                        🛒 Tambah ke Keranjang
+                                    </button>
+
+                                    <button class="btn-beli" onclick="beliSekarang('Flower Drawstring Bag',190000,'images/produk3.jpg')">
+                                        ♡ Beli Sekarang
+                                    </button>
+                                </div>
+                            </article>
+
+                            <!-- PRODUK 4 -->
+                            <article class="card">
+                                <div class="gambar-produk">
+                                    <img src="images/produk4.jpg" alt="Classic Sling Bag">
+                                </div>
+
+                                <h3>Classic Sling Bag</h3>
+                                <p>Tas selempang praktis untuk menemani aktivitas sehari-hari.</p>
+                                <strong class="harga">Rp150.000</strong>
+
+                                <div class="tombol-produk">
+                                    <button class="btn-keranjang" onclick="tambahKeranjang('Classic Sling Bag',150000,'images/produk4.jpg')">
+                                        🛒 Tambah ke Keranjang
+                                    </button>
+
+                                    <button class="btn-beli" onclick="beliSekarang('Classic Sling Bag',150000,'images/produk4.jpg')">
+                                        ♡ Beli Sekarang
+                                    </button>
+                                </div>
+                            </article>
+
+                        </div>
+                    </section>
+
+                    <!-- KATEGORI AKSESORIS -->
+                    <section class="bagian-kategori" id="aksesoris" data-kategori="aksesoris">
+
+                        <div class="judul-kategori">
+                            <div class="ikon">🎀</div>
+                            <h2>Koleksi Aksesoris</h2>
+                            <p>Detail kecil yang membuat penampilan semakin menarik.</p>
+                            <div class="garis"></div>
+                        </div>
+
+                        <div class="product-grid">
+
+                            <!-- PRODUK 5 -->
+                            <article class="card">
+                                <div class="gambar-produk">
+                                    <img src="images/produk5.jpg" alt="Fashion Accessories">
+                                </div>
+
+                                <h3>Fashion Accessories</h3>
+                                <p>Aksesoris pilihan untuk mempercantik penampilanmu.</p>
+                                <strong class="harga">Rp45.000</strong>
+
+                                <div class="tombol-produk">
+                                    <button class="btn-keranjang" onclick="tambahKeranjang('Fashion Accessories',45000,'images/produk5.jpg')">
+                                        🛒 Tambah ke Keranjang
+                                    </button>
+
+                                    <button class="btn-beli" onclick="beliSekarang('Fashion Accessories',45000,'images/produk5.jpg')">
+                                        ♡ Beli Sekarang
+                                    </button>
+                                </div>
+                            </article>
+
+                            <!-- PRODUK 6 -->
+                            <article class="card">
+                                <div class="gambar-produk">
+                                    <img src="images/produk6.jpg" alt="Pretty Bag Charm">
+                                </div>
+
+                                <h3>Pretty Bag Charm</h3>
+                                <p>Hiasan gantungan lucu untuk mempercantik tas kesayangan.</p>
+                                <strong class="harga">Rp35.000</strong>
+
+                                <div class="tombol-produk">
+                                    <button class="btn-keranjang" onclick="tambahKeranjang('Pretty Bag Charm',35000,'images/produk6.jpg')">
+                                        🛒 Tambah ke Keranjang
+                                    </button>
+
+                                    <button class="btn-beli" onclick="beliSekarang('Pretty Bag Charm',35000,'images/produk6.jpg')">
+                                        ♡ Beli Sekarang
+                                    </button>
+                                </div>
+                            </article>
+
+                            <!-- PRODUK 7 -->
+                            <article class="card">
+                                <div class="gambar-produk">
+                                    <img src="images/produk7.jpg" alt="Lovely Keychain">
+                                </div>
+
+                                <h3>Lovely Keychain</h3>
+                                <p>Gantungan kunci manis dengan desain unik dan menarik.</p>
+                                <strong class="harga">Rp25.000</strong>
+
+                                <div class="tombol-produk">
+                                    <button class="btn-keranjang" onclick="tambahKeranjang('Lovely Keychain',25000,'images/produk7.jpg')">
+                                        🛒 Tambah ke Keranjang
+                                    </button>
+
+                                    <button class="btn-beli" onclick="beliSekarang('Lovely Keychain',25000,'images/produk7.jpg')">
+                                        ♡ Beli Sekarang
+                                    </button>
+                                </div>
+                            </article>
+
+                            <!-- PRODUK 8 -->
+                            <article class="card">
+                                <div class="gambar-produk">
+                                    <span class="badge-produk">New</span>
+                                    <img src="images/produk8.jpg" alt="Sweet Accessories">
+                                </div>
+
+                                <h3>Sweet Accessories</h3>
+                                <p>Koleksi aksesoris cantik untuk hadiah maupun penggunaan pribadi.</p>
+                                <strong class="harga">Rp50.000</strong>
+
+                                <div class="tombol-produk">
+                                    <button class="btn-keranjang" onclick="tambahKeranjang('Sweet Accessories',50000,'images/produk8.jpg')">
+                                        🛒 Tambah ke Keranjang
+                                    </button>
+
+                                    <button class="btn-beli" onclick="beliSekarang('Sweet Accessories',50000,'images/produk8.jpg')">
+                                        ♡ Beli Sekarang
+                                    </button>
+                                </div>
+                            </article>
+
+                        </div>
+                    </section>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- AJAKAN -->
+        <section class="ajakan">
+            <h2>Sudah Menemukan Favoritmu? 💗</h2>
+            <p>
+                Yuk, lanjutkan belanjamu dan nikmati koleksi pilihan TokoDita!
+            </p>
+
+            <a href="keranjang.html" class="btn">
+                Lihat Keranjang →
+            </a>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        ♡ © 2026 TokoDita | Belanja Cantik, Hati Bahagia ♡
+    </footer>
+
+    <!-- POPUP KERANJANG -->
+    <div class="popup-keranjang" id="popupKeranjang">
+        <div class="popup-box">
+
+            <div class="popup-icon">🛍️</div>
+
+            <h2>Berhasil Ditambahkan! 💗</h2>
+
+            <p id="pesanPopup">
+                Produk berhasil ditambahkan ke keranjang.
+            </p>
+
+            <div class="popup-actions">
+                <button class="btn-tutup" onclick="tutupPopup()">
+                    Lanjut Belanja
+                </button>
+
+                <a href="keranjang.html" class="btn-popup">
+                    Lihat Keranjang →
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <script>
+
+        // FILTER PRODUK
+        const tombolFilter = document.querySelectorAll(".filter-produk button");
+        const bagianKategori = document.querySelectorAll(".bagian-kategori");
+        const daftarKategori = document.getElementById("daftarKategori");
+        const jumlahProduk = document.getElementById("jumlahProduk");
+
+        function filterProduk(kategori) {
+
+            let totalTampil = 0;
+
+            bagianKategori.forEach(function(bagian) {
+
+                const cocok =
+                    kategori === "semua" ||
+                    bagian.dataset.kategori === kategori;
+
+                bagian.hidden = !cocok;
+
+                if (cocok) {
+                    totalTampil += bagian.querySelectorAll(".card").length;
+                }
+            });
+
+            // Semua produk: tas dan aksesoris berdampingan.
+            // Filter satu kategori: bagian kategori berada di tengah.
+            if (kategori === "semua") {
+                daftarKategori.classList.remove("satu-kategori");
+            } else {
+                daftarKategori.classList.add("satu-kategori");
+            }
+
+            // Mengubah tombol aktif
+            tombolFilter.forEach(function(tombol) {
+
+                const aktif = tombol.dataset.filter === kategori;
+
+                tombol.classList.toggle("aktif", aktif);
+                tombol.setAttribute("aria-pressed", aktif ? "true" : "false");
+
+            });
+
+            jumlahProduk.textContent =
+                "Menampilkan " + totalTampil + " produk";
+        }
+
+        // Menjalankan filter saat tombol diklik
+        tombolFilter.forEach(function(tombol) {
+
+            tombol.addEventListener("click", function() {
+                filterProduk(this.dataset.filter);
+            });
+
+        });
+
+        // Menampilkan semua produk saat halaman dibuka
+        filterProduk("semua");
+
+
+        // MENYIMPAN PRODUK KE KERANJANG
+        function simpanKeKeranjang(nama, harga, gambar) {
+
+            let keranjang = JSON.parse(
+                localStorage.getItem("keranjang")
+            ) || [];
+
+            let produkAda = keranjang.find(
+                item => item.nama === nama
+            );
+
+            if (produkAda) {
+
+                produkAda.jumlah += 1;
+
+            } else {
+
+                keranjang.push({
+                    nama: nama,
+                    harga: harga,
+                    gambar: gambar,
+                    jumlah: 1
+                });
+
+            }
+
+            localStorage.setItem(
+                "keranjang",
+                JSON.stringify(keranjang)
+            );
+
+            updateJumlahKeranjang();
+        }
+
+
+        // TOMBOL TAMBAH KE KERANJANG
+        function tambahKeranjang(nama, harga, gambar) {
+
+            simpanKeKeranjang(nama, harga, gambar);
+
+            document.getElementById("pesanPopup").textContent =
+                nama + " berhasil ditambahkan ke keranjang!";
+
+            document.getElementById("popupKeranjang")
+                .classList.add("aktif");
+        }
+
+
+        // TOMBOL BELI SEKARANG
+        function beliSekarang(nama, harga, gambar) {
+
+            simpanKeKeranjang(nama, harga, gambar);
+
+            window.location.href = "keranjang.html";
+        }
+
+
+        // MENGHITUNG JUMLAH PRODUK DI KERANJANG
+        function updateJumlahKeranjang() {
+
+            let keranjang = JSON.parse(
+                localStorage.getItem("keranjang")
+            ) || [];
+
+            let jumlah = keranjang.reduce(
+                (total, item) => total + Number(item.jumlah || 0),
+                0
+            );
+
+            let elemen = document.getElementById("jumlahKeranjang");
+
+            if (elemen) {
+                elemen.textContent = jumlah;
+            }
+        }
+
+
+        // MENUTUP POPUP
+        function tutupPopup() {
+
+            document.getElementById("popupKeranjang")
+                .classList.remove("aktif");
+        }
+
+
+        // MENUTUP POPUP JIKA AREA LUAR DIKLIK
+        document.getElementById("popupKeranjang")
+            .addEventListener("click", function(event) {
+
+                if (event.target === this) {
+                    tutupPopup();
+                }
+
+            });
+
+
+        // MEMPERBARUI JUMLAH KERANJANG SAAT HALAMAN DIBUKA
+        updateJumlahKeranjang();
+
+    </script>
+
+</body>
+</html>
